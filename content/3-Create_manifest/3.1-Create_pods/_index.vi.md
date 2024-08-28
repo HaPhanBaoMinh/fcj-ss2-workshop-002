@@ -6,9 +6,9 @@ chapter : false
 pre : " <b> 3.1 </b> "
 ---
 
-![Overview](/fcj-ss2-workshop-001/images/2-Manifest/01.png)
+![Overview](/fcj-ss2-workshop-002/images/2-Manifest/01.png)
 
-![Overview](/fcj-ss2-workshop-001/images/2-Manifest/02.png)
+![Overview](/fcj-ss2-workshop-002/images/2-Manifest/02.png)
 
 - **apiVersion: v1**: Khai báo Kubernetes API version mà chúng ta sử dụng.
 
@@ -31,10 +31,10 @@ pre : " <b> 3.1 </b> "
 
     kubectl apply -f ./pods.yaml
 
-![Overview](/fcj-ss2-workshop-001/images/2-Manifest/03.png)
+![Overview](/fcj-ss2-workshop-002/images/2-Manifest/03.png)
 
 Chúng ta có thể kiểm tra trạng thái pods của chúng ta bằng cách, các bạn có thể thấy pods của chúng ta đã vào trạng thái **Running** được 60s. Vậy là chúng ta đã hoàn thành xong bước đầu tiên.
 
     kubectl get pod
 
-![Overview](/fcj-ss2-workshop-001/images/2-Manifest/04.png)
+![Overview](/fcj-ss2-workshop-002/images/2-Manifest/04.png)

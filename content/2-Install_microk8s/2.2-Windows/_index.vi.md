@@ -10,11 +10,11 @@ pre : " <b> 2.2 </b> "
 
 ### 2. Run the Installer
 
-![Overview](/fcj-ss2-workshop-001/images/1-Basic_concepts./08.png)
+![Overview](/fcj-ss2-workshop-002/images/1-Basic_concepts./08.png)
 
 ### 3. Open a command line
 
-![Overview](/fcj-ss2-workshop-001/images/1-Basic_concepts./09.png)
+![Overview](/fcj-ss2-workshop-002/images/1-Basic_concepts./09.png)
 
 ### 4. Check the status while Kubernetes starts
 

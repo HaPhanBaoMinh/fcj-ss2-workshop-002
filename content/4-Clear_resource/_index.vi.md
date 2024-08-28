@@ -18,13 +18,13 @@ Ví dụ, để xóa một Deployment có tên là `nginx-deployment`, chúng ta
 
     kubectl delete deployment nginx-deployment
 
-![Overview](/fcj-ss2-workshop-001/images/2-Manifest/25.png)
+![Overview](/fcj-ss2-workshop-002/images/2-Manifest/25.png)
 
 Kiểm tra xem Deployment đã được xóa chưa:
 
     kubectl get deployment -A
 
-![Overview](/fcj-ss2-workshop-001/images/2-Manifest/26.png)
+![Overview](/fcj-ss2-workshop-002/images/2-Manifest/26.png)
 
 Như vậy, không còn thấy Deployment `nginx-deployment` nữa.
 

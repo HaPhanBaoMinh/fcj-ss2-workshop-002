@@ -6,7 +6,7 @@ chapter: false
 pre: "<b> 1.5 </b>"
 ---
 
-![Overview](/fcj-ss2-workshop-001/images/1-Basic_concepts./06.png)
+![Overview](/fcj-ss2-workshop-002/images/1-Basic_concepts./06.png)
 
 ## 1. Deployment
 

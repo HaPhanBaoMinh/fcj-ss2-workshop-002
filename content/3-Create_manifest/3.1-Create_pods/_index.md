@@ -6,9 +6,9 @@ chapter: false
 pre: "<b> 3.1 </b>"
 ---
 
-![Overview](/fcj-ss2-workshop-001/images/2-Manifest/01.png)
+![Overview](/fcj-ss2-workshop-002/images/2-Manifest/01.png)
 
-![Overview](/fcj-ss2-workshop-001/images/2-Manifest/02.png)
+![Overview](/fcj-ss2-workshop-002/images/2-Manifest/02.png)
 
 - **apiVersion: v1**: Declares the Kubernetes API version we are using.
 
@@ -31,12 +31,12 @@ pre: "<b> 3.1 </b>"
 
     kubectl apply -f ./pods.yaml
 
-![Overview](/fcj-ss2-workshop-001/images/2-Manifest/03.png)
+![Overview](/fcj-ss2-workshop-002/images/2-Manifest/03.png)
 
 We can check the status of our pods by running the following command. You can see that our pod has been in the **Running** state for 60 seconds. So we have completed the first step.
 
     kubectl get pod
 
-![Overview](/fcj-ss2-workshop-001/images/2-Manifest/04.png)
+![Overview](/fcj-ss2-workshop-002/images/2-Manifest/04.png)
 
 At this point, there's still nothing special, is there? It's not much different from running a container normally. So let’s move on to step two!

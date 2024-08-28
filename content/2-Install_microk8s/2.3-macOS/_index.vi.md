@@ -12,7 +12,7 @@ pre : " <b> 2.3 </b> "
 
     microk8s install
 
-![Overview](/fcj-ss2-workshop-001/images/1-Basic_concepts./10.png)
+![Overview](/fcj-ss2-workshop-002/images/1-Basic_concepts./10.png)
 
 ### 2. Check the status while Kubernetes starts
 

@@ -20,9 +20,9 @@ Kubernetes cung cấp ba loại expose chính cho Service:
 
 3. **LoadBalancer**: Tạo ra một load balancer bên ngoài (thường là từ nhà cung cấp cloud) và định tuyến traffic từ load balancer này đến các Node trong cluster.
 
-![Overview](/fcj-ss2-workshop-001/images/2-Manifest/20.png)
+![Overview](/fcj-ss2-workshop-002/images/2-Manifest/20.png)
 
-![Overview](/fcj-ss2-workshop-001/images/2-Manifest/21.png)
+![Overview](/fcj-ss2-workshop-002/images/2-Manifest/21.png)
 
 - **apiVersion: v1**: Khai báo Kubernetes API version mà chúng ta sử dụng. v1 là API version cho đối tượng Service.
 
@@ -57,13 +57,13 @@ Hiện tại chúng ta đã tạo một Service với kiểu expose là **NodePo
 
     kubectl apply -f ./service.yaml
 
-![Overview](/fcj-ss2-workshop-001/images/2-Manifest/22.png)
+![Overview](/fcj-ss2-workshop-002/images/2-Manifest/22.png)
 
 Kiểm tra trạng thái của Service
 
     kubectl get svc 
 
-![Overview](/fcj-ss2-workshop-001/images/2-Manifest/23.png)
+![Overview](/fcj-ss2-workshop-002/images/2-Manifest/23.png)
 
 Như vậy, chúng ta đã tạo một Service với kiểu expose là NodePort, Service này sẽ mở một cổng trên mỗi Node trong cluster để cho phép truy cập vào Pod của Deployment.
 
@@ -71,7 +71,7 @@ Trong hình thì cổng mà Service sẽ lắng nghe traffic từ bên ngoài cl
 
 Tiếp theo mình sẽ truy cập thử bằng port này để kiểm tra xem Service đã hoạt động đúng chưa.
 
-![Overview](/fcj-ss2-workshop-001/images/2-Manifest/24.png)
+![Overview](/fcj-ss2-workshop-002/images/2-Manifest/24.png)
 
 Như chúng ta có thể thấy, Service đã hoạt động đúng như mong đợi, chúng ta đã truy cập được vào Pod thông qua Service.
 

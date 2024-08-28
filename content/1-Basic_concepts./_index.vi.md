@@ -6,7 +6,7 @@ chapter : false
 pre : " <b> 1. </b> "
 ---
 
-![Overview](/fcj-ss2-workshop-001/images/1-Basic_concepts./03.png)
+![Overview](/fcj-ss2-workshop-002/images/1-Basic_concepts./03.png)
 
 ## 1. K8s là gì và tại sao chúng ta nên dùng nó ?
 

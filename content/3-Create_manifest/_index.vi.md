@@ -6,7 +6,7 @@ chapter : false
 pre : " <b> 3. </b> "
 ---
 
-![Overview](/fcj-ss2-workshop-001/images/1-Basic_concepts./12.png)
+![Overview](/fcj-ss2-workshop-002/images/1-Basic_concepts./12.png)
 
 Hiện tại có 2 cách để chúng ta có thể quản lý các resources trong K8s
 

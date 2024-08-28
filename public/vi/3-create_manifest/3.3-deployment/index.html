@@ -764,8 +764,8 @@
 
 
 
-	<p><img alt="Overview" src="/fcj-ss2-workshop-001/images/2-Manifest/15.png"></p>
-<p><img alt="Overview" src="/fcj-ss2-workshop-001/images/2-Manifest/16.png"></p>
+	<p><img alt="Overview" src="/fcj-ss2-workshop-002/images/2-Manifest/15.png"></p>
+<p><img alt="Overview" src="/fcj-ss2-workshop-002/images/2-Manifest/16.png"></p>
 <ul>
 <li>
 <p><strong>apiVersion: v1</strong>: Khai báo Kubernetes API version mà chúng ta sử dụng.</p>
@@ -849,18 +849,18 @@
 <h3 id="apply-manifest-file">Apply manifest file</h3>
 <pre><code>kubectl apply -f ./deployment.yaml
 </code></pre>
-<p><img alt="Overview" src="/fcj-ss2-workshop-001/images/2-Manifest/17.png"></p>
+<p><img alt="Overview" src="/fcj-ss2-workshop-002/images/2-Manifest/17.png"></p>
 <p>Chúng ta có thể kiểm tra trạng thái Deployment bằng cách:</p>
 <pre><code>kubectl get deployment
 </code></pre>
-<p><img alt="Overview" src="/fcj-ss2-workshop-001/images/2-Manifest/18.png"></p>
+<p><img alt="Overview" src="/fcj-ss2-workshop-002/images/2-Manifest/18.png"></p>
 <p>Như chúng ta có thể thấy hiện tại đã có 1 Deployment được tạo và được quản lý bởi Deployment này.</p>
 <p>Tiếp theo chúng ta hãy kiểm tra các pods và replicaSet được tạo ra từ Deployment này.</p>
 <pre><code>kubectl get pod
 
 kubectl get replicaset
 </code></pre>
-<p><img alt="Overview" src="/fcj-ss2-workshop-001/images/2-Manifest/19.png"></p>
+<p><img alt="Overview" src="/fcj-ss2-workshop-002/images/2-Manifest/19.png"></p>
 <p>Nhu các bạn có thể thấy hiện tại đã có 2 pods được tạo và 1 replicaSet được tạo và được quản lý bởi Deployment này.</p>
 <p>Okay vậy là chúng ta đã đi được 2/3. Sau khi chúng ta đã tạo xong Deployment, vậy làm sao để chúng ta có thể sử dụng các tài nguyên mà chúng ta đã tạo ra. Mời các bạn qua bước tiếp theo nhé.</p>
 

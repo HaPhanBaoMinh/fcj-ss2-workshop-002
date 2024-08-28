@@ -6,9 +6,9 @@ chapter : false
 pre : " <b> 3.2 </b> "
 ---
 
-![Overview](/fcj-ss2-workshop-001/images/2-Manifest/05.png)
+![Overview](/fcj-ss2-workshop-002/images/2-Manifest/05.png)
 
-![Overview](/fcj-ss2-workshop-001/images/2-Manifest/06.png)
+![Overview](/fcj-ss2-workshop-002/images/2-Manifest/06.png)
 
 - **apiVersion: v1**: Declares the Kubernetes API version that we are using.
 
@@ -40,13 +40,13 @@ pre : " <b> 3.2 </b> "
 
     kubectl apply -f ./replica-set.yaml
 
-![Overview](/fcj-ss2-workshop-001/images/2-Manifest/07.png)
+![Overview](/fcj-ss2-workshop-002/images/2-Manifest/07.png)
 
 We can check the status of the ReplicaSet by using:
 
     kubectl get replicaset 
 
-![Overview](/fcj-ss2-workshop-001/images/2-Manifest/14.png)
+![Overview](/fcj-ss2-workshop-002/images/2-Manifest/14.png)
 
 As you can see, there are currently 2 pods created and managed by this ReplicaSet.
 
@@ -56,7 +56,7 @@ We can check the status of our pods by using:
 
 If everything is correct, there should be a total of 3 pods created: 1 pod from the previous step we did, and 2 pods created by the ReplicaSet. But no! Look, only 1 new pod has been created. Why is that?
 
-![Overview](/fcj-ss2-workshop-001/images/2-Manifest/08.png)
+![Overview](/fcj-ss2-workshop-002/images/2-Manifest/08.png)
 
 Let's look at the detailed information of both pods:
 
@@ -66,17 +66,17 @@ Let's look at the detailed information of both pods:
 
 Notice the **Labels** of both as follows:
 
-![Overview](/fcj-ss2-workshop-001/images/2-Manifest/09.png)
+![Overview](/fcj-ss2-workshop-002/images/2-Manifest/09.png)
 
-![Overview](/fcj-ss2-workshop-001/images/2-Manifest/11.png)
+![Overview](/fcj-ss2-workshop-002/images/2-Manifest/11.png)
 
 Both have the same **Labels**, meaning that the pod we created from the previous step has been managed along with the new pod by our newly created ReplicaSet.
 
 Now let's test the **self-healing** feature of the ReplicaSet by trying to delete one pod and see what happens!
 
-![Overview](/fcj-ss2-workshop-001/images/2-Manifest/12.png)
+![Overview](/fcj-ss2-workshop-002/images/2-Manifest/12.png)
 
-![Overview](/fcj-ss2-workshop-001/images/2-Manifest/13.png)
+![Overview](/fcj-ss2-workshop-002/images/2-Manifest/13.png)
 
 As you can see, when we delete one pod, K8s immediately creates a new pod for us, and it is in the **ContainerCreating** state. This ensures **HA** for us, as it always guarantees enough pods are running.
 

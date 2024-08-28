@@ -48,7 +48,7 @@ Découvrez comment utiliser ce thème Hugo et apprenez en les concepts
 
 s'affiche comme
 
-![Un chapitre](/en/basics/installation/fcj-ss2-workshop-001/images/chapter.png?classes=shadow&width=60pc)
+![Un chapitre](/en/basics/installation/fcj-ss2-workshop-002/images/chapter.png?classes=shadow&width=60pc)
 
 **Hugo-theme-learn** fournit des archétypes pour créer des squelettes pour votre site. Commencez par créer votre premier chapitre avec la commande suivante:
 

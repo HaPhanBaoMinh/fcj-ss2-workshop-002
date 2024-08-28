@@ -781,8 +781,8 @@
 <p><strong>LoadBalancer</strong>: Tạo ra một load balancer bên ngoài (thường là từ nhà cung cấp cloud) và định tuyến traffic từ load balancer này đến các Node trong cluster.</p>
 </li>
 </ol>
-<p><img alt="Overview" src="/fcj-ss2-workshop-001/images/2-Manifest/20.png"></p>
-<p><img alt="Overview" src="/fcj-ss2-workshop-001/images/2-Manifest/21.png"></p>
+<p><img alt="Overview" src="/fcj-ss2-workshop-002/images/2-Manifest/20.png"></p>
+<p><img alt="Overview" src="/fcj-ss2-workshop-002/images/2-Manifest/21.png"></p>
 <ul>
 <li>
 <p><strong>apiVersion: v1</strong>: Khai báo Kubernetes API version mà chúng ta sử dụng. v1 là API version cho đối tượng Service.</p>
@@ -835,15 +835,15 @@ app: nginx: Label này giúp phân loại và quản lý các đối tượng tr
 <h3 id="apply-manifest-file">Apply manifest file</h3>
 <pre><code>kubectl apply -f ./service.yaml
 </code></pre>
-<p><img alt="Overview" src="/fcj-ss2-workshop-001/images/2-Manifest/22.png"></p>
+<p><img alt="Overview" src="/fcj-ss2-workshop-002/images/2-Manifest/22.png"></p>
 <p>Kiểm tra trạng thái của Service</p>
 <pre><code>kubectl get svc 
 </code></pre>
-<p><img alt="Overview" src="/fcj-ss2-workshop-001/images/2-Manifest/23.png"></p>
+<p><img alt="Overview" src="/fcj-ss2-workshop-002/images/2-Manifest/23.png"></p>
 <p>Như vậy, chúng ta đã tạo một Service với kiểu expose là NodePort, Service này sẽ mở một cổng trên mỗi Node trong cluster để cho phép truy cập vào Pod của Deployment.</p>
 <p>Trong hình thì cổng mà Service sẽ lắng nghe traffic từ bên ngoài cluster là <strong>31905</strong>, và cổng mà traffic sẽ được chuyển tiếp tới bên trong container là <strong>80</strong>.</p>
 <p>Tiếp theo mình sẽ truy cập thử bằng port này để kiểm tra xem Service đã hoạt động đúng chưa.</p>
-<p><img alt="Overview" src="/fcj-ss2-workshop-001/images/2-Manifest/24.png"></p>
+<p><img alt="Overview" src="/fcj-ss2-workshop-002/images/2-Manifest/24.png"></p>
 <p>Như chúng ta có thể thấy, Service đã hoạt động đúng như mong đợi, chúng ta đã truy cập được vào Pod thông qua Service.</p>
 <p>Vậy là qua bài viết này, bạn đã biết cách tạo một Service trong Kubernetes và cách expose Service ra bên ngoài cluster. Trong bài viết tiếp theo, mình sẽ hướng dẫn cách sử dụng <strong>Ingress</strong> để quản lý traffic từ bên ngoài vào trong cluster.</p>
 

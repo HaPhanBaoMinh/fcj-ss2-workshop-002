@@ -6,7 +6,7 @@ chapter: false
 pre: "<b> 1.4 </b>"
 ---
 
-![Overview](/fcj-ss2-workshop-001/images/1-Basic_concepts./05.png)
+![Overview](/fcj-ss2-workshop-002/images/1-Basic_concepts./05.png)
 
 ## 1. ReplicaSet
 

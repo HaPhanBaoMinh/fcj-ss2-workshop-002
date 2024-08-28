@@ -764,8 +764,8 @@
 
 
 
-	<p><img alt="Overview" src="/fcj-ss2-workshop-001/images/2-Manifest/05.png"></p>
-<p><img alt="Overview" src="/fcj-ss2-workshop-001/images/2-Manifest/06.png"></p>
+	<p><img alt="Overview" src="/fcj-ss2-workshop-002/images/2-Manifest/05.png"></p>
+<p><img alt="Overview" src="/fcj-ss2-workshop-002/images/2-Manifest/06.png"></p>
 <ul>
 <li>
 <p><strong>apiVersion: v1</strong>: Declares the Kubernetes API version that we are using.</p>
@@ -827,29 +827,29 @@
 <h3 id="apply-manifest-file">Apply manifest file</h3>
 <pre><code>kubectl apply -f ./replica-set.yaml
 </code></pre>
-<p><img alt="Overview" src="/fcj-ss2-workshop-001/images/2-Manifest/07.png"></p>
+<p><img alt="Overview" src="/fcj-ss2-workshop-002/images/2-Manifest/07.png"></p>
 <p>We can check the status of the ReplicaSet by using:</p>
 <pre><code>kubectl get replicaset 
 </code></pre>
-<p><img alt="Overview" src="/fcj-ss2-workshop-001/images/2-Manifest/14.png"></p>
+<p><img alt="Overview" src="/fcj-ss2-workshop-002/images/2-Manifest/14.png"></p>
 <p>As you can see, there are currently 2 pods created and managed by this ReplicaSet.</p>
 <p>We can check the status of our pods by using:</p>
 <pre><code>kubectl get pod
 </code></pre>
 <p>If everything is correct, there should be a total of 3 pods created: 1 pod from the previous step we did, and 2 pods created by the ReplicaSet. But no! Look, only 1 new pod has been created. Why is that?</p>
-<p><img alt="Overview" src="/fcj-ss2-workshop-001/images/2-Manifest/08.png"></p>
+<p><img alt="Overview" src="/fcj-ss2-workshop-002/images/2-Manifest/08.png"></p>
 <p>Let&rsquo;s look at the detailed information of both pods:</p>
 <pre><code>kubectl describe pod nginx-pod
 
 kubectl describe pod nginx-replicaset-p7r9f
 </code></pre>
 <p>Notice the <strong>Labels</strong> of both as follows:</p>
-<p><img alt="Overview" src="/fcj-ss2-workshop-001/images/2-Manifest/09.png"></p>
-<p><img alt="Overview" src="/fcj-ss2-workshop-001/images/2-Manifest/11.png"></p>
+<p><img alt="Overview" src="/fcj-ss2-workshop-002/images/2-Manifest/09.png"></p>
+<p><img alt="Overview" src="/fcj-ss2-workshop-002/images/2-Manifest/11.png"></p>
 <p>Both have the same <strong>Labels</strong>, meaning that the pod we created from the previous step has been managed along with the new pod by our newly created ReplicaSet.</p>
 <p>Now let&rsquo;s test the <strong>self-healing</strong> feature of the ReplicaSet by trying to delete one pod and see what happens!</p>
-<p><img alt="Overview" src="/fcj-ss2-workshop-001/images/2-Manifest/12.png"></p>
-<p><img alt="Overview" src="/fcj-ss2-workshop-001/images/2-Manifest/13.png"></p>
+<p><img alt="Overview" src="/fcj-ss2-workshop-002/images/2-Manifest/12.png"></p>
+<p><img alt="Overview" src="/fcj-ss2-workshop-002/images/2-Manifest/13.png"></p>
 <p>As you can see, when we delete one pod, K8s immediately creates a new pod for us, and it is in the <strong>ContainerCreating</strong> state. This ensures <strong>HA</strong> for us, as it always guarantees enough pods are running.</p>
 <p>At this point, you can see some of the advantages of K8s, right? However, what if our service has a new version that needs to be deployed? Let&rsquo;s move on to step 3!</p>
 

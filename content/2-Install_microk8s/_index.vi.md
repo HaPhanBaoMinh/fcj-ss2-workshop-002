@@ -6,7 +6,7 @@ chapter : false
 pre : " <b> 2. </b> "
 ---
 
-![Overview](/fcj-ss2-workshop-001/images/1-Basic_concepts./11.png)
+![Overview](/fcj-ss2-workshop-002/images/1-Basic_concepts./11.png)
 
 ### 1. Thông tin tham khảo về quá trình cài đặt [MicroK8s](https://microk8s.io/)
 

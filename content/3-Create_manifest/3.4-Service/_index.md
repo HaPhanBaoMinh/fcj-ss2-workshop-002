@@ -20,9 +20,9 @@ Kubernetes provides three main types of exposure for Services:
 
 3. **LoadBalancer**: Creates an external load balancer (typically from a cloud provider) and routes traffic from this load balancer to the Nodes in the cluster.
 
-![Overview](/fcj-ss2-workshop-001/images/2-Manifest/20.png)
+![Overview](/fcj-ss2-workshop-002/images/2-Manifest/20.png)
 
-![Overview](/fcj-ss2-workshop-001/images/2-Manifest/21.png)
+![Overview](/fcj-ss2-workshop-002/images/2-Manifest/21.png)
 
 - **apiVersion: v1**: Declares the Kubernetes API version we are using. v1 is the API version for the Service object.
 
@@ -57,13 +57,13 @@ We have now created a Service with the exposure type **NodePort**. This Service 
 
     kubectl apply -f ./service.yaml
 
-![Overview](/fcj-ss2-workshop-001/images/2-Manifest/22.png)
+![Overview](/fcj-ss2-workshop-002/images/2-Manifest/22.png)
 
 Check the status of the Service:
 
     kubectl get svc 
 
-![Overview](/fcj-ss2-workshop-001/images/2-Manifest/23.png)
+![Overview](/fcj-ss2-workshop-002/images/2-Manifest/23.png)
 
 As we can see, we have created a Service with the exposure type NodePort. This Service will open a port on each Node in the cluster to allow access to the Pods of the Deployment.
 
@@ -71,7 +71,7 @@ In the image, the port that the Service will listen for traffic from outside the
 
 Next, I will try to access this port to check if the Service is functioning correctly.
 
-![Overview](/fcj-ss2-workshop-001/images/2-Manifest/24.png)
+![Overview](/fcj-ss2-workshop-002/images/2-Manifest/24.png)
 
 As we can see, the Service is functioning as expected, and we have accessed the Pod through the Service.
 

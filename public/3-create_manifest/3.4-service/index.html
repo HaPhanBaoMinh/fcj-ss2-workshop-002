@@ -781,8 +781,8 @@
 <p><strong>LoadBalancer</strong>: Creates an external load balancer (typically from a cloud provider) and routes traffic from this load balancer to the Nodes in the cluster.</p>
 </li>
 </ol>
-<p><img alt="Overview" src="/fcj-ss2-workshop-001/images/2-Manifest/20.png"></p>
-<p><img alt="Overview" src="/fcj-ss2-workshop-001/images/2-Manifest/21.png"></p>
+<p><img alt="Overview" src="/fcj-ss2-workshop-002/images/2-Manifest/20.png"></p>
+<p><img alt="Overview" src="/fcj-ss2-workshop-002/images/2-Manifest/21.png"></p>
 <ul>
 <li>
 <p><strong>apiVersion: v1</strong>: Declares the Kubernetes API version we are using. v1 is the API version for the Service object.</p>
@@ -835,15 +835,15 @@ app: nginx: This label helps classify and manage objects in Kubernetes.</p>
 <h3 id="apply-manifest-file">Apply manifest file</h3>
 <pre><code>kubectl apply -f ./service.yaml
 </code></pre>
-<p><img alt="Overview" src="/fcj-ss2-workshop-001/images/2-Manifest/22.png"></p>
+<p><img alt="Overview" src="/fcj-ss2-workshop-002/images/2-Manifest/22.png"></p>
 <p>Check the status of the Service:</p>
 <pre><code>kubectl get svc 
 </code></pre>
-<p><img alt="Overview" src="/fcj-ss2-workshop-001/images/2-Manifest/23.png"></p>
+<p><img alt="Overview" src="/fcj-ss2-workshop-002/images/2-Manifest/23.png"></p>
 <p>As we can see, we have created a Service with the exposure type NodePort. This Service will open a port on each Node in the cluster to allow access to the Pods of the Deployment.</p>
 <p>In the image, the port that the Service will listen for traffic from outside the cluster is <strong>31905</strong>, and the port to which traffic will be forwarded inside the container is <strong>80</strong>.</p>
 <p>Next, I will try to access this port to check if the Service is functioning correctly.</p>
-<p><img alt="Overview" src="/fcj-ss2-workshop-001/images/2-Manifest/24.png"></p>
+<p><img alt="Overview" src="/fcj-ss2-workshop-002/images/2-Manifest/24.png"></p>
 <p>As we can see, the Service is functioning as expected, and we have accessed the Pod through the Service.</p>
 <p>Thus, through this article, you have learned how to create a Service in Kubernetes and how to expose the Service to the outside of the cluster. In the next article, I will guide you on how to use <strong>Ingress</strong> to manage traffic from outside into the cluster.</p>
 

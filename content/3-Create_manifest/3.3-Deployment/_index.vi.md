@@ -6,9 +6,9 @@ chapter : false
 pre : " <b> 3.3 </b> "
 ---
 
-![Overview](/fcj-ss2-workshop-001/images/2-Manifest/15.png)
+![Overview](/fcj-ss2-workshop-002/images/2-Manifest/15.png)
 
-![Overview](/fcj-ss2-workshop-001/images/2-Manifest/16.png)
+![Overview](/fcj-ss2-workshop-002/images/2-Manifest/16.png)
 
 - **apiVersion: v1**: Khai báo Kubernetes API version mà chúng ta sử dụng.
 
@@ -58,13 +58,13 @@ Khác biệt chính giữa Deployment và ReplicaSet là Deployment cung cấp n
 
     kubectl apply -f ./deployment.yaml
 
-![Overview](/fcj-ss2-workshop-001/images/2-Manifest/17.png)
+![Overview](/fcj-ss2-workshop-002/images/2-Manifest/17.png)
 
 Chúng ta có thể kiểm tra trạng thái Deployment bằng cách:
 
     kubectl get deployment
 
-![Overview](/fcj-ss2-workshop-001/images/2-Manifest/18.png)
+![Overview](/fcj-ss2-workshop-002/images/2-Manifest/18.png)
 
 Như chúng ta có thể thấy hiện tại đã có 1 Deployment được tạo và được quản lý bởi Deployment này.
 
@@ -74,7 +74,7 @@ Tiếp theo chúng ta hãy kiểm tra các pods và replicaSet được tạo ra
 
     kubectl get replicaset
 
-![Overview](/fcj-ss2-workshop-001/images/2-Manifest/19.png)
+![Overview](/fcj-ss2-workshop-002/images/2-Manifest/19.png)
 
 Nhu các bạn có thể thấy hiện tại đã có 2 pods được tạo và 1 replicaSet được tạo và được quản lý bởi Deployment này.
 

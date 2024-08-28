@@ -764,8 +764,8 @@
 
 
 
-	<p><img alt="Overview" src="/fcj-ss2-workshop-001/images/2-Manifest/15.png"></p>
-<p><img alt="Overview" src="/fcj-ss2-workshop-001/images/2-Manifest/16.png"></p>
+	<p><img alt="Overview" src="/fcj-ss2-workshop-002/images/2-Manifest/15.png"></p>
+<p><img alt="Overview" src="/fcj-ss2-workshop-002/images/2-Manifest/16.png"></p>
 <ul>
 <li>
 <p><strong>apiVersion: v1</strong>: Declares the Kubernetes API version that we are using.</p>
@@ -849,18 +849,18 @@
 <h3 id="apply-manifest-file">Apply manifest file</h3>
 <pre><code>kubectl apply -f ./deployment.yaml
 </code></pre>
-<p><img alt="Overview" src="/fcj-ss2-workshop-001/images/2-Manifest/17.png"></p>
+<p><img alt="Overview" src="/fcj-ss2-workshop-002/images/2-Manifest/17.png"></p>
 <p>We can check the status of the Deployment by using:</p>
 <pre><code>kubectl get deployment
 </code></pre>
-<p><img alt="Overview" src="/fcj-ss2-workshop-001/images/2-Manifest/18.png"></p>
+<p><img alt="Overview" src="/fcj-ss2-workshop-002/images/2-Manifest/18.png"></p>
 <p>As we can see, there is currently 1 Deployment created and managed by this Deployment.</p>
 <p>Next, let&rsquo;s check the pods and ReplicaSets created from this Deployment.</p>
 <pre><code>kubectl get pod
 
 kubectl get replicaset
 </code></pre>
-<p><img alt="Overview" src="/fcj-ss2-workshop-001/images/2-Manifest/19.png"></p>
+<p><img alt="Overview" src="/fcj-ss2-workshop-002/images/2-Manifest/19.png"></p>
 <p>As you can see, there are currently 2 pods created and 1 ReplicaSet created and managed by this Deployment.</p>
 <p>Okay, so we have completed 2 out of 3. After we have created the Deployment, how can we use the resources we have created? Let&rsquo;s move on to the next step!</p>
 

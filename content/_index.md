@@ -8,7 +8,7 @@ pre: " <b> 1. </b> "
 
 # Installing and Deploying Your First Service with Kubernetes (Microk8s)
 
-![Overview](/fcj-ss2-workshop-001/images/1-Basic_concepts./01.png)
+![Overview](/fcj-ss2-workshop-002/images/1-Basic_concepts./01.png)
 
 ## 1. Overview
 

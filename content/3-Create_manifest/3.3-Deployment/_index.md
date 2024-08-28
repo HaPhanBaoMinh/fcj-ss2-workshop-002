@@ -6,9 +6,9 @@ chapter : false
 pre : " <b> 3.3 </b> "
 ---
 
-![Overview](/fcj-ss2-workshop-001/images/2-Manifest/15.png)
+![Overview](/fcj-ss2-workshop-002/images/2-Manifest/15.png)
 
-![Overview](/fcj-ss2-workshop-001/images/2-Manifest/16.png)
+![Overview](/fcj-ss2-workshop-002/images/2-Manifest/16.png)
 
 - **apiVersion: v1**: Declares the Kubernetes API version that we are using.
 
@@ -58,13 +58,13 @@ The main difference between a Deployment and a ReplicaSet is that a Deployment p
 
     kubectl apply -f ./deployment.yaml
 
-![Overview](/fcj-ss2-workshop-001/images/2-Manifest/17.png)
+![Overview](/fcj-ss2-workshop-002/images/2-Manifest/17.png)
 
 We can check the status of the Deployment by using:
 
     kubectl get deployment
 
-![Overview](/fcj-ss2-workshop-001/images/2-Manifest/18.png)
+![Overview](/fcj-ss2-workshop-002/images/2-Manifest/18.png)
 
 As we can see, there is currently 1 Deployment created and managed by this Deployment.
 
@@ -74,7 +74,7 @@ Next, let's check the pods and ReplicaSets created from this Deployment.
 
     kubectl get replicaset
 
-![Overview](/fcj-ss2-workshop-001/images/2-Manifest/19.png)
+![Overview](/fcj-ss2-workshop-002/images/2-Manifest/19.png)
 
 As you can see, there are currently 2 pods created and 1 ReplicaSet created and managed by this Deployment.
 
