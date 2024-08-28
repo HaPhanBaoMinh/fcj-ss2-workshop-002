@@ -1,0 +1,141 @@
+[
+{
+	"uri": "//localhost:1313/1-basic_concepts./1.1-control_plane/",
+	"title": "Control Plane",
+	"tags": [],
+	"description": "",
+	"content": "\n1. Control Plane Control Plane or Master Node is responsible for controlling our K8s cluster. The control plane consists of several components. However, within the scope of this workshop, I will introduce the following key components:\nkube-api-server: This component is responsible for handling all requests to the Kubernetes system.\netcd: This is a key-value database used to store information about the K8s cluster.\nkube-scheduler: When we create a new container, this component selects the node where the container will be placed.\nkube-controller-manager: This component ensures that the actual state of the resources in the Kubernetes cluster matches the desired state specified by the user. For example, if we create a replicaset with 3 running pods, the kube-controller-manager will ensure that there are always 3 pods running.\ncloud-controller-manager: For some K8s clusters deployed on the cloud, this component helps Kubernetes communicate with cloud platforms.\n"
+},
+{
+	"uri": "//localhost:1313/1-basic_concepts./",
+	"title": "Core Concepts",
+	"tags": [],
+	"description": "",
+	"content": "\n1. What is K8s and why should we use it? When you search for this question on the internet, you can find many definitions and explanations mentioned. Here is my explanation of this technology.\nImagine that in a construction project, there are many departments responsible for different tasks, such as:\nConstruction department Logistics department Painting department Electrical department Plumbing department And the person who coordinates and ensures that these tasks operate smoothly and on schedule is the contractor.\nIn case the construction department is behind schedule, the contractor must find a way to add resources to this department by hiring more workers to ensure that the work proceeds as planned without interruption.\nIn this case, K8s can be seen as the contractor in the above scenario. K8s acts as a coordinator in the system, where each service in the system is like a department in that construction project. When a service encounters a problem (resource shortage, app crash, etc.), K8s will play the role of providing additional \u0026ldquo;workers\u0026rdquo; by scaling up the Pods to handle the workload.\nAdditionally, there are many other benefits from using K8s for deployment. You can refer to more details in this video.\n2. Core Concepts in K8s Control Plane Nodes Pod ReplicaSet Deployment Namespace Services Types of Services 3. References Overview - kubernetes Getting Started with K8s: Core Concepts "
+},
+{
+	"uri": "//localhost:1313/3-create_manifest/3.1-create_pods/",
+	"title": "Create first pods",
+	"tags": [],
+	"description": "",
+	"content": "\napiVersion: v1: Declares the Kubernetes API version we are using.\nkind: Pod: Declares that this manifest file will create a Pod object.\nmetadata: Metadata for the Pod; here we declare the name and labels of the Pod. The labels of the Pod will serve to indicate which service this Pod belongs to.\nspec: This is the configuration section for our Pod.\ncontainers: This is an array of objects containing information about the containers running in the Pod. In our file, we currently only have one container, nginx.\nname: nginx: We name the container nginx.\nimage: nginx:latest: The Docker image information that we will use.\nports:\ncontainerPort: 80: The container will listen on port 80 to handle HTTP connections. Apply manifest file kubectl apply -f ./pods.yaml\rWe can check the status of our pods by running the following command. You can see that our pod has been in the Running state for 60 seconds. So we have completed the first step.\nkubectl get pod\rAt this point, there\u0026rsquo;s still nothing special, is there? It\u0026rsquo;s not much different from running a container normally. So let’s move on to step two!\n"
+},
+{
+	"uri": "//localhost:1313/",
+	"title": "Introduction",
+	"tags": [],
+	"description": "",
+	"content": "Installing and Deploying Your First Service with Kubernetes (Microk8s) 1. Overview Hello everyone! In this workshop, I will accompany you to explore the most basic concepts of Kubernetes and proceed to deploy your first service on K8s.\nFor K8s, there are many types and versions available. However, in a learning environment or lab setup, we can use lighter and more compact versions like Minikube, K3s, MicroK8s, \u0026hellip; In this series, I will use MicroK8s.\n2. Objectives The objective of this workshop is to provide you with the most fundamental concepts of K8s and how to deploy your first service.\nThis will also serve as a foundation for many upcoming workshops on K8s.\n3. Content Introduction to Kubernetes and MicroK8s. Installing MicroK8s. Creating and deploying your first service on Kubernetes. Testing and managing the deployed service. "
+},
+{
+	"uri": "//localhost:1313/2-install_microk8s/2.1-ubuntu/",
+	"title": "Ubuntu",
+	"tags": [],
+	"description": "",
+	"content": "1. Install MicroK8s on Linux sudo snap install microk8s --classic\rsudo snap alias microk8s.kubectl kubectl\r2. Check the status while Kubernetes starts microk8s status --wait-ready\r3. Turn on the services you want microk8s enable dashboard\rmicrok8s enable dns\rmicrok8s enable registry\r4. Start using Kubernetes microk8s kubectl get all --all-namespaces\r"
+},
+{
+	"uri": "//localhost:1313/3-create_manifest/3.2-create_replicaset/",
+	"title": "Create ReplicaSet",
+	"tags": [],
+	"description": "",
+	"content": "\napiVersion: v1: Declares the Kubernetes API version that we are using.\nkind: ReplicaSet: Declares that this manifest file will create a ReplicaSet object.\nmetadata: Metadata of the ReplicaSet; here we declare the name and labels of the ReplicaSet.\nspec:\nreplicas: 2: This section specifies the number of pod replicas that the ReplicaSet must maintain. Here, the ReplicaSet must ensure that there are always 2 pods running. selector:\nmatchLabels: app: nginx: This part configures the ReplicaSet to manage pods with the label app: nginx. template: This can be considered the blueprint for the pods that the ReplicaSet will create.\nmetadata:\nlabels: app: nginx: Pods will have this label, matching the selector above. This ensures that the ReplicaSet will manage these pods. spec:\ncontainers: This section specifies the containers that will run inside each pod. name: nginx-pod-with-replicaset: The name of the container is nginx-pod-with-replicaset. image: nginx:latest: The image to be used is nginx:latest. ports: containerPort: 80: The container will listen on port 80 to handle HTTP connections. Apply manifest file kubectl apply -f ./replica-set.yaml\rWe can check the status of the ReplicaSet by using:\nkubectl get replicaset As you can see, there are currently 2 pods created and managed by this ReplicaSet.\nWe can check the status of our pods by using:\nkubectl get pod\rIf everything is correct, there should be a total of 3 pods created: 1 pod from the previous step we did, and 2 pods created by the ReplicaSet. But no! Look, only 1 new pod has been created. Why is that?\nLet\u0026rsquo;s look at the detailed information of both pods:\nkubectl describe pod nginx-pod\rkubectl describe pod nginx-replicaset-p7r9f\rNotice the Labels of both as follows:\nBoth have the same Labels, meaning that the pod we created from the previous step has been managed along with the new pod by our newly created ReplicaSet.\nNow let\u0026rsquo;s test the self-healing feature of the ReplicaSet by trying to delete one pod and see what happens!\nAs you can see, when we delete one pod, K8s immediately creates a new pod for us, and it is in the ContainerCreating state. This ensures HA for us, as it always guarantees enough pods are running.\nAt this point, you can see some of the advantages of K8s, right? However, what if our service has a new version that needs to be deployed? Let\u0026rsquo;s move on to step 3!\n"
+},
+{
+	"uri": "//localhost:1313/2-install_microk8s/",
+	"title": "Install microk8s",
+	"tags": [],
+	"description": "",
+	"content": "\n1. Reference information for the installation process of MicroK8s 2. Reference information for the installation process of MiniKube "
+},
+{
+	"uri": "//localhost:1313/1-basic_concepts./1.2-nodes/",
+	"title": "Nodes",
+	"tags": [],
+	"description": "",
+	"content": "\n1. Nodes We have just explored the Master Node, and now it\u0026rsquo;s time to look at the Worker Node. In each K8s cluster, there will be multiple Nodes, and they are controlled by the Master Node. These nodes can be virtual machines, physical machines, etc. The Worker Node consists of the following key components:\nkubelet: This is a component that runs on each Node. It receives commands from the control plane to execute on each Node. Additionally, kubelet reports the status of the containers to the control plane.\nkube-proxy: This is a network proxy running on each Node, responsible for networking within the Node.\ncontainer runtime: This component is responsible for running the containers.\n"
+},
+{
+	"uri": "//localhost:1313/2-install_microk8s/2.2-windows/",
+	"title": "Windows",
+	"tags": [],
+	"description": "",
+	"content": "1. Download the installer for Windows 2. Run the Installer 3. Open a command line 4. Check the status while Kubernetes starts microk8s status --wait-ready\r5. Turn on the services you want microk8s enable dashboard\rmicrok8s enable dns\rmicrok8s enable registry\r6. Start using Kubernetes microk8s kubectl get all --all-namespaces\r"
+},
+{
+	"uri": "//localhost:1313/3-create_manifest/",
+	"title": "Create manifest",
+	"tags": [],
+	"description": "",
+	"content": "\nCurrently, there are two ways for us to manage resources in K8s:\nCommand-line Interface: With this method, we will use kubectl to create and manage resources.\nYAML manifest: This is the more common method. We will configure the desired service information in a .yaml file, which is called a manifest file. In this file, we will configure values such as replicaset, images, version, etc. In this workshop, we will use method number 2 to create our first service.\n"
+},
+{
+	"uri": "//localhost:1313/3-create_manifest/3.3-deployment/",
+	"title": "Deployment",
+	"tags": [],
+	"description": "",
+	"content": "\napiVersion: v1: Declares the Kubernetes API version that we are using.\nkind: Deployment: Declares that this manifest file will create a Deployment object. A Deployment helps manage the rollout and updates of ReplicaSets.\nmetadata: Metadata of the Deployment; here we declare the name and labels of the Deployment.\nname: nginx-deployment: The name of the Deployment is nginx-deployment.\nlabels:\napp: nginx: This is a label that the Deployment uses to manage other objects like ReplicaSets. spec:\nreplicas: 2: This section specifies the number of Pod replicas that the Deployment must maintain. The Deployment will ensure that there are always 2 Pods running.\nselector:\nmatchLabels:\napp: nginx: This section configures the Deployment to manage Pods with the label app: nginx. template: This can be considered the blueprint for the Pods that the Deployment will create.\nmetadata:\nlabels:\napp: nginx: Pods will have this label, matching the selector above. This ensures that the Deployment will manage these Pods. spec:\ncontainers: This section specifies the containers that will run inside each Pod.\nname: nginx-pod-with-deployment: The name of the container is nginx-pod-with-deployment.\nimage: nginx:latest: The image to be used is nginx:latest.\nports:\ncontainerPort: 80: The container will listen on port 80 to handle HTTP connections. The main difference between a Deployment and a ReplicaSet is that a Deployment provides more advanced features, such as rollout updates, rollbacks, and managing ReplicaSets. I will write a separate workshop to introduce this part.\nApply manifest file kubectl apply -f ./deployment.yaml\rWe can check the status of the Deployment by using:\nkubectl get deployment\rAs we can see, there is currently 1 Deployment created and managed by this Deployment.\nNext, let\u0026rsquo;s check the pods and ReplicaSets created from this Deployment.\nkubectl get pod\rkubectl get replicaset\rAs you can see, there are currently 2 pods created and 1 ReplicaSet created and managed by this Deployment.\nOkay, so we have completed 2 out of 3. After we have created the Deployment, how can we use the resources we have created? Let\u0026rsquo;s move on to the next step!\n"
+},
+{
+	"uri": "//localhost:1313/2-install_microk8s/2.3-macos/",
+	"title": "macOS",
+	"tags": [],
+	"description": "",
+	"content": "1. Install MicroK8s on macOS brew install ubuntu/microk8s/microk8s\rmicrok8s install\r2. Check the status while Kubernetes starts microk8s status --wait-ready\r3. Turn on the services you want microk8s enable dashboard\rmicrok8s enable dns\rmicrok8s enable registry\r4. Start using Kubernetes microk8s kubectl get all --all-namespaces\r"
+},
+{
+	"uri": "//localhost:1313/1-basic_concepts./1.3-pod/",
+	"title": "Pod",
+	"tags": [],
+	"description": "",
+	"content": "\n1. Pod A Pod is the smallest unit in K8s, and Pods act as a wrapper around containers. Each Pod can have one or more containers. The containers within the same Pod share the same network and resources of that Pod.\nIn the example above, in Pod-1, you can see it consists of 3 containers: NodeJS, MongoDB, and Redis, and NodeJS can access both of the other containers.\nMeanwhile, in Pod-2, there is only one container running .Net. Usually, each Pod will have one container.\nWhen a Pod is terminated or deleted, it cannot replace itself. That\u0026rsquo;s why we often use it in conjunction with other objects like replicaSet or deployment for self-healing.\n"
+},
+{
+	"uri": "//localhost:1313/4-clear_resource/",
+	"title": "Clear Resource",
+	"tags": [],
+	"description": "",
+	"content": "After we have created the resources, you can delete them when you no longer need them. Alternatively, you can keep those resources for future Workshops.\nDeleting Resources To delete a resource, we use the kubectl delete command with the following syntax:\nkubectl delete \u0026lt;resource_type\u0026gt; \u0026lt;resource_name\u0026gt;\rFor example, to delete a Deployment named nginx-deployment, we use the command:\nkubectl delete deployment nginx-deployment\rCheck if the Deployment has been deleted:\nkubectl get deployment -A\rAs you can see, the Deployment nginx-deployment is no longer present.\n"
+},
+{
+	"uri": "//localhost:1313/1-basic_concepts./1.4-replicaset/",
+	"title": "ReplicaSet",
+	"tags": [],
+	"description": "",
+	"content": "\n1. ReplicaSet To maintain a stable number of Pods and ensure self-healing capabilities, we can use a ReplicaSet. ReplicaSet helps us maintain the number of running Pods.\nReplicaSet will initialize the number of Pods as specified.\nAs shown in the diagram, we have a ReplicaSet that initializes 2 Pods. If for any reason one of those Pods encounters an issue and is terminated, the ReplicaSet will automatically create another Pod to maintain the desired number.\n"
+},
+{
+	"uri": "//localhost:1313/3-create_manifest/3.4-service/",
+	"title": "Service",
+	"tags": [],
+	"description": "",
+	"content": "Introduction to Kubernetes Service In Kubernetes, a Service is an object that defines how to connect and access Pods. Pods often have a short lifespan and can be replaced at any time. Therefore, a Service provides a stable access point (usually an IP address or DNS) to communicate with those Pods, regardless of whether the Pods are replaced or not.\nService Exposure Types Kubernetes provides three main types of exposure for Services:\nClusterIP (default): Creates an internal IP for the Service that can only be accessed within the cluster. This is the most common and simplest type of exposure.\nNodePort: Opens a port on each Node to allow external access to the Service. NodePort maps a random (or predefined) port on each Node to the port of the Service.\nLoadBalancer: Creates an external load balancer (typically from a cloud provider) and routes traffic from this load balancer to the Nodes in the cluster.\napiVersion: v1: Declares the Kubernetes API version we are using. v1 is the API version for the Service object.\nkind: Service: Declares that this manifest file will create a Service object.\nmetadata: Metadata of the Service, where the name and labels of the Service are declared.\nname: nginx-service: The name of the Service is nginx-service.\nlabels: app: nginx: This label helps classify and manage objects in Kubernetes.\nspec:\ntype: NodePort: This section specifies that the Service will be exposed to the outside through a specific port on each Node in the cluster.\nselector:\napp: nginx: This section configures the Service to know which Pods with the label app: nginx it will manage and forward traffic to. ports: Defines the ports that the Service will use to listen for and forward traffic.\nprotocol: TCP: The Service will use the TCP protocol.\nport: 80: This is the port that the Service will listen for traffic from outside the cluster.\ntargetPort: 80: This is the port to which traffic will be forwarded inside the container.\nWe have now created a Service with the exposure type NodePort. This Service will open a port on each Node in the cluster to allow access to the Pods of the Deployment.\nApply manifest file kubectl apply -f ./service.yaml\rCheck the status of the Service:\nkubectl get svc As we can see, we have created a Service with the exposure type NodePort. This Service will open a port on each Node in the cluster to allow access to the Pods of the Deployment.\nIn the image, the port that the Service will listen for traffic from outside the cluster is 31905, and the port to which traffic will be forwarded inside the container is 80.\nNext, I will try to access this port to check if the Service is functioning correctly.\nAs we can see, the Service is functioning as expected, and we have accessed the Pod through the Service.\nThus, through this article, you have learned how to create a Service in Kubernetes and how to expose the Service to the outside of the cluster. In the next article, I will guide you on how to use Ingress to manage traffic from outside into the cluster.\n"
+},
+{
+	"uri": "//localhost:1313/1-basic_concepts./1.5-deployment/",
+	"title": "Deployment",
+	"tags": [],
+	"description": "",
+	"content": "\n1. Deployment When a service or application is deployed, it will be continuously updated with new versions. When updating new versions for containers, we need an automated update mechanism instead of manually updating each service, which can be especially difficult when our service has dozens or even hundreds of containers. The Deployment object helps us handle these issues.\nAdditionally, Deployment provides rollback mechanisms if the new version encounters issues and can manage Deployment versions, allowing us to roll back to a specific version if needed.\n"
+},
+{
+	"uri": "//localhost:1313/1-basic_concepts./1.6-service/",
+	"title": "Service",
+	"tags": [],
+	"description": "",
+	"content": "\n1. Service In Kubernetes, a Service is an object that defines how to connect and access Pods. Pods typically have a short lifecycle and can be replaced at any time. Therefore, a Service provides a stable access point (usually an IP address or DNS) to communicate with those Pods, regardless of whether the Pods are replaced.\nThere are four main types of services, and we will explore each type in more detail in another workshop:\nClusterIP: This is the default type if no type is specified for the service. With this type, only services within the Kubernetes cluster can access it.\nNodePort: The service will open a port on the host node and use the node\u0026rsquo;s IP to expose the service externally. This method is not recommended, as it can be difficult to manage if your Kubernetes cluster has 100 services and opens 100 ports on the node.\nLoadBalancer: Used to expose services externally by utilizing the LoadBalancer of cloud providers.\nExternalName\n"
+},
+{
+	"uri": "//localhost:1313/categories/",
+	"title": "Categories",
+	"tags": [],
+	"description": "",
+	"content": ""
+},
+{
+	"uri": "//localhost:1313/tags/",
+	"title": "Tags",
+	"tags": [],
+	"description": "",
+	"content": ""
+}]

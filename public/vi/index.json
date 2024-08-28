@@ -1,0 +1,141 @@
+[
+{
+	"uri": "//localhost:1313/vi/1-basic_concepts./1.1-control_plane/",
+	"title": "Control Plane",
+	"tags": [],
+	"description": "",
+	"content": "\n1. Control Plane Control Plane hay Master Node chịu trách nhiệm điều kiển K8s cluster của chúng ta, trong control place gồm nhiều thành phần. Tuy nhiên trong phạm vi workshop lần này mình sẽ giới thiệu cho các bạn các thành phần chính sau:\nkube-api-server: Là thành phần chịu trách nhiệm xử lý tất cả các request đến hệ thống Kubernetes.\netcd: Đây là một database dạng key value, để chứa thông tin về k8s.\nkube-scheduler: Khi chúng ta tạo mới một container thì đây sẽ là thành phần lựa chọn node để chúng ta đặt các container.\nkube-controller-manager: Đây là thành phần đảm bảo rằng trạng thái thực tế của các tài nguyên trong cụm Kubernetes luôn khớp với trạng thái mong muốn mà người dùng đã chỉ định. Ví dụ chúng ta tạo ra một replicaset với 3 pod chạy thì kube-controller-manager sẽ đảm bảo rằng sẽ luôn có 3 pod được chạy.\ncloud-controller-manager: Đối với một số cụm K8s được triển khai trên cloud thì đây là thành phần giúp K8s có thể giao tiếp với các cloud platforms.\n"
+},
+{
+	"uri": "//localhost:1313/vi/1-basic_concepts./",
+	"title": "Core Concepts",
+	"tags": [],
+	"description": "",
+	"content": "\n1. K8s là gì và tại sao chúng ta nên dùng nó ? Khi bạn tìm kiếm câu hỏi này trên internet bạn có thể thấy rất nhiều các khái niệm và cách giải thích được nhắc đến. Dưới đây là cách giải thích của tôi về công nghệ này.\nTưởng tượng rằng trong một dự án xây dựng sẽ có nhiều các bộ phận đảm nhiệm các công việc khác nhau, ví dụ như:\nBộ phận xây dựng Bộ phận hậu cần Bộ phận sơn Bộ phận làm điện Bộ phận làm nước và người điều phối và đảm bảo các công việc này hoạt động một cách trơn tru và kịp tiến độ sẽ là người chủ thầu.\nTrong trường hợp bộ phận xây dựng đang trễ tiến độ thì người chủ thầu phải tìm cách thêm tài nguyên có bộ phận này bằng cách tuyển thêm người, để đảm bỏa rằng công việc diễn ra đúng kế hoạch và không bị gián đoạn.\nTrong trường hợp này có thể coi K8s là người chủ thầu trong trường hợp trên. K8s sẽ đóng vai trò như một người điều phối trong hệ thống, mỗi service trong hệ thống giống như một bộ phận trong dự án xây dựng đó. Khi một service có vấn đề (thiếu tài nguyên, app bị cash, \u0026hellip;) thì K8s sẽ có vai trò cung cấp thêm các \u0026ldquo;công nhân\u0026rdquo; bằng cách scale thêm các Pod để xử lý.\nNgoài ra còn có rất nhiều lợi ích khác từ việc sử dụng K8s trong việc triển khai. Các bạn có thể tham khảo thêm ở video.\n2. Các Core Concepts trong K8s Control Plane Nodes Pod ReplicaSet Deployment Namespace Services Types of Services 3. Tài liệu tham khảo Overview - kubernetes Getting Started with K8s: Core Concepts "
+},
+{
+	"uri": "//localhost:1313/vi/3-create_manifest/3.1-create_pods/",
+	"title": "Create first pods",
+	"tags": [],
+	"description": "",
+	"content": "\napiVersion: v1: Khai báo Kubernetes API version mà chúng ta sử dụng.\nkind: Pod: Khai báo file manifest này sẽ tạo Pod object.\nmetadata: metadata của Pod, ở đây mình khai báo name và labels của Pod. labels của pod sẽ có nhiệm vụ trong việc đánh dấu pod này sẽ thuộc service nào.\nspec: Đây là phần cấu hình pod của chúng ta\ncontainers: Đây là một array các object chứa thông tin của các container chạy trong pod. Trong file của chúng ta hiện chỉ có 1 container nginx\nname: nginx: Chúng ta đặt tên của container là nginx\nimage: nginx:latest: Thông tin docker images mà chúng ta sẽ sử dụng\nports:\ncontainerPort: 80: Container sẽ lắng nghe trên cổng 80 để xử lý các kết nối HTTP. Apply manifest file kubectl apply -f ./pods.yaml\rChúng ta có thể kiểm tra trạng thái pods của chúng ta bằng cách, các bạn có thể thấy pods của chúng ta đã vào trạng thái Running được 60s. Vậy là chúng ta đã hoàn thành xong bước đầu tiên.\nkubectl get pod\r"
+},
+{
+	"uri": "//localhost:1313/vi/",
+	"title": "Giới thiệu",
+	"tags": [],
+	"description": "",
+	"content": "Cài đặt và triển khai service đầu tiên với Kubernetes (Microk8s) 1. Overview Xin chào các bạn trong bài workshop này mình sẽ cùng đồng hành cùng các bạn tìm hiểu từ các khái niệm cơ bản nhất của Kubernetes và tiến hành triển khai service đầu tiên lên K8s.\nĐối với K8s thì sẽ có nhiều loại, phiên bản khác nhau, nhưng trong môi trường học tập, làm lab chúng ta có thể dùng các phiên bản nhỏ gọn và nhẹ hơn cả K8s như Minikube, K3s, MicoK8s, \u0026hellip; trong chuỗi series này mình sẽ sử dụng MicroK8s.\n2. Objectives Mục tiêu của workshop này sẽ giúp các bạn có những khái niệm cơ bản nhất về các khái niệm trong K8s và cách triển khai service đầu tiên.\nĐây cũng sẽ là tiền đề cho nhiều chuỗi workshop sau này về K8s.\n3. Content Giới thiệu về Kubernetes và MicroK8s. Cài đặt MicroK8s. Tạo và triển khai dịch vụ đầu tiên của bạn trên Kubernetes. Kiểm tra và quản lý dịch vụ đã triển khai. "
+},
+{
+	"uri": "//localhost:1313/vi/2-install_microk8s/2.1-ubuntu/",
+	"title": "Ubuntu",
+	"tags": [],
+	"description": "",
+	"content": "1. Install MicroK8s on Linux sudo snap install microk8s --classic\rsudo snap alias microk8s.kubectl kubectl\r2. Check the status while Kubernetes starts microk8s status --wait-ready\r3. Turn on the services you want microk8s enable dashboard\rmicrok8s enable dns\rmicrok8s enable registry\r4. Start using Kubernetes microk8s kubectl get all --all-namespaces\r"
+},
+{
+	"uri": "//localhost:1313/vi/3-create_manifest/3.2-create_replicaset/",
+	"title": "Create ReplicaSet",
+	"tags": [],
+	"description": "",
+	"content": "\napiVersion: v1: Khai báo Kubernetes API version mà chúng ta sử dụng.\nkind: ReplicaSet: Khai báo file manifest này sẽ tạo ReplicaSet object.\nmetadata: metadata của ReplicaSet, ở đây mình khai báo name và labels của ReplicaSet.\nspec:\nreplicas: 2: Phần này xác định số lượng bản sao của pod mà ReplicaSet phải duy trì. Ở đây, ReplicaSet phải đảm bảo luôn có 2 pod đang chạy. selector:\nmatchLabels: app: nginx: Phần này cấu hình ReplicaSet biết sẽ quản lý các pod có label là app: nginx. template: Đây có thể coi là bản thiết kế cho các pod mà ReplicaSet sẽ tạo ra.\nmetadata:\nlabels: app: nginx: Pod sẽ có label này, khớp với selector ở trên. Đảm bảo rằng ReplicaSet sẽ quản lý các pod này. spec:\ncontainers: Phần này xác định các container sẽ chạy bên trong mỗi pod. name: nginx-pod-with-replicaset: Tên của container là nginx-pod-with-replicaset. image: nginx:latest: Image sẽ sử dụng là nginx:latest. ports: containerPort: 80: Container sẽ lắng nghe trên cổng 80 để xử lý các kết nối HTTP. Apply manifest file kubectl apply -f ./replica-set.yaml\rChúng ta có thể kiểm tra trạng thái replicaSet bằng cách:\nkubectl get replicaset Như các bạn có thể thấy hiện tại đã có 2 pod được tạo và được quản lý bởi replicaSet này.\nChúng ta có thể kiểm tra trạng thái pods của chúng ta bằng cách.\nkubectl get pod\rNếu như đúng thì sẽ có tổng cộng 3 pod được tạo ra, 1 pod từ step trước chúng ta đã làm. và 2 pod sẽ được tạo từ ReplicaSet. Nhưng không! hãy nhìn xem. Chỉ có 1 pods mới được tạo ra, vì sao vậy ?\nChúng ta hãy xem thông tin chi tiết của cả 2 pods này nhé\nkubectl describe pod nginx-pod\rkubectl describe pod nginx-replicaset-p7r9f\rHãy để ý phần Labels của cả 2 như sau:\nCả 2 đều có chung 1 Labels đồng nghĩa với việc pod mà chúng ta đã tạo ra từ step trước đã được quản lý cùng với pod mới bằng replicaSet của chúng ta vừa tạo.\nBây giờ chúng ta hãy test tính năng self-healing của relicaSet bằng cách thử xóa 1 pod xem chuyện gì sẽ xảy ra!\nNhư các bạn có thể thấy khi chúng ta xóa 1 pod thì ngay lập tức K8s tạo thêm cho chúng ta 1 pod mới, và nó đang trong trạng thái ContainerCreating. Việc này đảm bảo tính HA cho chúng ta, khi luôn đảm bảo có đủ số Pod chạy.\nTới đây thì cũng thấy được phần nào sự lợi hại của K8s rồi đúng không. Tuy nhiên nếu service chúng ta có version mới cần triển khai thì sao ? Mời các bạn đến với step số 3 nhé!\n"
+},
+{
+	"uri": "//localhost:1313/vi/2-install_microk8s/",
+	"title": "Install microk8s",
+	"tags": [],
+	"description": "",
+	"content": "\n1. Thông tin tham khảo về quá trình cài đặt MicroK8s 2. Thông tin tham khảo về quá trình cài đặt MiniKube "
+},
+{
+	"uri": "//localhost:1313/vi/1-basic_concepts./1.2-nodes/",
+	"title": "Nodes",
+	"tags": [],
+	"description": "",
+	"content": "\n1. Nodes Vừa rồi chúng ta đã tìm hiểu Master Node bây giờ sẽ đến lượt Worker Node, trong mỗi cụm K8s sẽ có nhiều các Node, và chúng được điều khiển bởi Master Node. Các node này có thể là máy ảo, máy vật lý, \u0026hellip; Đối với các Worker Node sẽ gồm những thành phần chính sau:\nkubelet: Đây là một thành phần chạy trên mỗi Node, nó sẽ nhận lệnh từ control plane để thực thi trên mỗi Node, ngoài ra kubelet còn báo cáo các trạng thái của các container cho control plane.\nkube-proxy: Đây là một network proxy chạy trên mỗi Node, chịu trách nhiệm về phần netword trong Node.\ncontainer runtime: Là thành phần chịu trách nhiệm chạy các container.\n"
+},
+{
+	"uri": "//localhost:1313/vi/2-install_microk8s/2.2-windows/",
+	"title": "Windows",
+	"tags": [],
+	"description": "",
+	"content": "1. Download the installer for Windows 2. Run the Installer 3. Open a command line 4. Check the status while Kubernetes starts microk8s status --wait-ready\r5. Turn on the services you want microk8s enable dashboard\rmicrok8s enable dns\rmicrok8s enable registry\r6. Start using Kubernetes microk8s kubectl get all --all-namespaces\r"
+},
+{
+	"uri": "//localhost:1313/vi/3-create_manifest/",
+	"title": "Create manifest",
+	"tags": [],
+	"description": "",
+	"content": "\nHiện tại có 2 cách để chúng ta có thể quản lý các resources trong K8s\nCommand-line Interface: Với cách này, chúng ta sẽ sử dụng kubectl để tạo, quản lý các resource.\nYAML manifest: Đây là cách thông dụng hơn. Chúng ta sẽ cấu hình các thông tin về service mà chúng ta mong muốn trong 1 file .yaml, đây gọi là file manifest, trong file này sẽ cấu hình các giá trị như replicaset, images, version, \u0026hellip; Trong workshop này chúng ta sẽ dùng cách số 2 để tạo ra servie đầu tiên.\n"
+},
+{
+	"uri": "//localhost:1313/vi/3-create_manifest/3.3-deployment/",
+	"title": "Deployment",
+	"tags": [],
+	"description": "",
+	"content": "\napiVersion: v1: Khai báo Kubernetes API version mà chúng ta sử dụng.\nkind: Deployment: Khai báo file manifest này sẽ tạo Deployment object. Deployment giúp quản lý việc triển khai và cập nhật của ReplicaSet.\nmetadata: metadata của Deployment, ở đây mình khai báo name và labels của Deployment.\nname: nginx-deployment: Tên của Deployment là nginx-deployment.\nlabels:\napp: nginx: Đây là một nhãn mà Deployment sử dụng để quản lý các đối tượng khác như ReplicaSet. spec:\nreplicas: 2: Phần này xác định số lượng bản sao của Pod mà Deployment phải duy trì. Deployment sẽ đảm bảo luôn có 2 Pod đang chạy.\nselector:\nmatchLabels:\napp: nginx: Phần này cấu hình Deployment biết sẽ quản lý các Pod có label là app: nginx. template: Đây có thể coi là bản thiết kế cho các Pod mà Deployment sẽ tạo ra.\nmetadata:\nlabels:\napp: nginx: Pod sẽ có label này, khớp với selector ở trên. Đảm bảo rằng Deployment sẽ quản lý các Pod này. spec:\ncontainers: Phần này xác định các container sẽ chạy bên trong mỗi Pod.\nname: nginx-pod-with-deployment: Tên của container là nginx-pod-with-deployment.\nimage: nginx:latest: Image sẽ sử dụng là nginx:latest.\nports:\ncontainerPort: 80: Container sẽ lắng nghe trên cổng 80 để xử lý các kết nối HTTP. Khác biệt chính giữa Deployment và ReplicaSet là Deployment cung cấp nhiều tính năng cao cấp hơn, như khả năng cập nhật rollout, rollback và quản lý ReplicaSet. Phần này mình sẽ viết hẳn 1 Workshop để giới thiệu về phần này.\nApply manifest file kubectl apply -f ./deployment.yaml\rChúng ta có thể kiểm tra trạng thái Deployment bằng cách:\nkubectl get deployment\rNhư chúng ta có thể thấy hiện tại đã có 1 Deployment được tạo và được quản lý bởi Deployment này.\nTiếp theo chúng ta hãy kiểm tra các pods và replicaSet được tạo ra từ Deployment này.\nkubectl get pod\rkubectl get replicaset\rNhu các bạn có thể thấy hiện tại đã có 2 pods được tạo và 1 replicaSet được tạo và được quản lý bởi Deployment này.\nOkay vậy là chúng ta đã đi được 2/3. Sau khi chúng ta đã tạo xong Deployment, vậy làm sao để chúng ta có thể sử dụng các tài nguyên mà chúng ta đã tạo ra. Mời các bạn qua bước tiếp theo nhé.\n"
+},
+{
+	"uri": "//localhost:1313/vi/2-install_microk8s/2.3-macos/",
+	"title": "macOS",
+	"tags": [],
+	"description": "",
+	"content": "1. Install MicroK8s on macOS brew install ubuntu/microk8s/microk8s\rmicrok8s install\r2. Check the status while Kubernetes starts microk8s status --wait-ready\r3. Turn on the services you want microk8s enable dashboard\rmicrok8s enable dns\rmicrok8s enable registry\r4. Start using Kubernetes microk8s kubectl get all --all-namespaces\r"
+},
+{
+	"uri": "//localhost:1313/vi/1-basic_concepts./1.3-pod/",
+	"title": "Pod",
+	"tags": [],
+	"description": "",
+	"content": "\n1. Pod Pod là thành phần nhỏ nhất trong K8s, các Pod như một lớp bọc cho các container. Mỗi Pod sẽ có thể có 1 hoặc nhiều container. Các container trong cùng 1 Pod sẽ chia sẽ chung 1 mạng và tài nguyên của pod đó.\nTrong ví dụ trên ở Pod-1 ta có thể thấy gồm 3 container, NodeJS, MongoDB, Redis và NodeJS có thể truy cập cả 2 container kia.\nTrong khi đó ở Pod-2 thì chỉ có một container .Net chạy. Thông thường thì mỗi Pod sẽ có một container.\nKhi một Pod bị terminated hoặc bị xóa, nó sẽ không thể tự thay thế chính nó. đó là lý do tại sao chúng ta thường dùng nó chung với các object khác như replicaSet hay deployment để self-healing\n"
+},
+{
+	"uri": "//localhost:1313/vi/4-clear_resource/",
+	"title": "Clear resource",
+	"tags": [],
+	"description": "",
+	"content": "Sau khi chúng ta đã tạo ra các resource, các bạn có thể xóa chúng đi khi chúng ta không cần sử dụng nữa. Hoặc vẫn giữ các reource đó cho những Workshop sau.\nXóa resource Để xóa resource, chúng ta sử dụng lệnh kubectl delete với cú pháp như sau:\nkubeclt delete \u0026lt;resource_type\u0026gt; \u0026lt;resource_name\u0026gt;\rVí dụ, để xóa một Deployment có tên là nginx-deployment, chúng ta sử dụng lệnh:\nkubectl delete deployment nginx-deployment\rKiểm tra xem Deployment đã được xóa chưa:\nkubectl get deployment -A\rNhư vậy, không còn thấy Deployment nginx-deployment nữa.\n"
+},
+{
+	"uri": "//localhost:1313/vi/1-basic_concepts./1.4-replicaset/",
+	"title": "ReplicaSet",
+	"tags": [],
+	"description": "",
+	"content": "\n1. ReplicaSet Để duy trì số lượng Pod ổn định và có khả năng self-healing chúng ta có thể sử dụng ReplicaSet. ReplicaSet giúp chúng ta duy trì số lượng pods chạy.\nReplicaSet sẽ khởi tạo số Pods như chúng ta chỉ định.\nNhư trên hình vẽ, chúng ta có một ReplicaSet với khởi tạo 2 pod. Nếu vì bất kì lý do gì, 1 trong 2 pod đó có vấn đề và bị terminate, ReplicaSet sẽ tự động khởi tạo thêm 1 pod khác để đảm bảo số lượng\n"
+},
+{
+	"uri": "//localhost:1313/vi/3-create_manifest/3.4-service/",
+	"title": "Service",
+	"tags": [],
+	"description": "",
+	"content": "Giới Thiệu về Kubernetes Service Trong Kubernetes, Service là một đối tượng giúp định nghĩa cách thức kết nối và truy cập tới các Pod. Các Pod thường có vòng đời ngắn ngủi và có thể bị thay thế bất cứ lúc nào. Vì vậy, một Service sẽ cung cấp một điểm truy cập ổn định (thường là một địa chỉ IP hoặc DNS) để giao tiếp với các Pod đó, bất kể các Pod bị thay thế hay không.\nCác Kiểu Expose Của Service Kubernetes cung cấp ba loại expose chính cho Service:\nClusterIP (Mặc định): Tạo ra một IP nội bộ cho Service chỉ có thể truy cập được bên trong cluster. Đây là kiểu expose phổ biến nhất và đơn giản nhất.\nNodePort: Mở một cổng trên mỗi Node để cho phép truy cập từ bên ngoài vào Service. NodePort sẽ map một cổng ngẫu nhiên (hoặc định sẵn) trên mỗi Node tới port của Service.\nLoadBalancer: Tạo ra một load balancer bên ngoài (thường là từ nhà cung cấp cloud) và định tuyến traffic từ load balancer này đến các Node trong cluster.\napiVersion: v1: Khai báo Kubernetes API version mà chúng ta sử dụng. v1 là API version cho đối tượng Service.\nkind: Service: Khai báo file manifest này sẽ tạo Service object.\nmetadata: Metadata của Service, nơi khai báo name và labels của Service.\nname: nginx-service: Tên của Service là nginx-service.\nlabels: app: nginx: Label này giúp phân loại và quản lý các đối tượng trong Kubernetes.\nspec:\ntype: NodePort: Phần này xác định Service sẽ được expose ra bên ngoài thông qua một cổng cụ thể trên mỗi Node trong cluster.\nselector:\napp: nginx: Phần này cấu hình Service biết sẽ quản lý và chuyển tiếp traffic tới các Pod có label app: nginx. ports: Định nghĩa các cổng mà Service sẽ sử dụng để lắng nghe và chuyển tiếp traffic.\nprotocol: TCP: Service sẽ sử dụng giao thức TCP.\nport: 80: Đây là cổng mà Service sẽ lắng nghe traffic từ bên ngoài cluster.\ntargetPort: 80: Đây là cổng mà traffic sẽ được chuyển tiếp tới bên trong container.\nHiện tại chúng ta đã tạo một Service với kiểu expose là NodePort, Service này sẽ mở một cổng trên mỗi Node trong cluster để cho phép truy cập vào Pod của Deployment.\nApply manifest file kubectl apply -f ./service.yaml\rKiểm tra trạng thái của Service\nkubectl get svc Như vậy, chúng ta đã tạo một Service với kiểu expose là NodePort, Service này sẽ mở một cổng trên mỗi Node trong cluster để cho phép truy cập vào Pod của Deployment.\nTrong hình thì cổng mà Service sẽ lắng nghe traffic từ bên ngoài cluster là 31905, và cổng mà traffic sẽ được chuyển tiếp tới bên trong container là 80.\nTiếp theo mình sẽ truy cập thử bằng port này để kiểm tra xem Service đã hoạt động đúng chưa.\nNhư chúng ta có thể thấy, Service đã hoạt động đúng như mong đợi, chúng ta đã truy cập được vào Pod thông qua Service.\nVậy là qua bài viết này, bạn đã biết cách tạo một Service trong Kubernetes và cách expose Service ra bên ngoài cluster. Trong bài viết tiếp theo, mình sẽ hướng dẫn cách sử dụng Ingress để quản lý traffic từ bên ngoài vào trong cluster.\n"
+},
+{
+	"uri": "//localhost:1313/vi/1-basic_concepts./1.5-deployment/",
+	"title": "Deployment",
+	"tags": [],
+	"description": "",
+	"content": "\n1. Deployment Khi một service hay application được triển khai chúng sẽ được update các phiên bản mới một cách liên tục. Khi update các version mới cho các container chúng ta cần một cơ chế update tự động thay vì việc phải update thủ công từng service, việc này sẽ đặc biệt khó khăn khi service của chúng ta có hàng chục thậm chí hàng trăm container. Deployment object sẽ giúp chúng ta xử lý các vấn đề trên.\nNgoài ra deployment còn các cơ chế rollback nếu version mới gặp sự cố và có khả năng quản lý các phiên bản của deployment, chúng ta có thể rollback về một version cụ thể mà chúng ta mong muốn\n"
+},
+{
+	"uri": "//localhost:1313/vi/1-basic_concepts./1.6-service/",
+	"title": "Service",
+	"tags": [],
+	"description": "",
+	"content": "\n1. Service Trong Kubernetes, Service là một đối tượng giúp định nghĩa cách thức kết nối và truy cập tới các Pod. Các Pod thường có vòng đời ngắn ngủi và có thể bị thay thế bất cứ lúc nào. Vì vậy, một Service sẽ cung cấp một điểm truy cập ổn định (thường là một địa chỉ IP hoặc DNS) để giao tiếp với các Pod đó, bất kể các Pod bị thay thế hay không.\nCó 4 kiểu service chính, chúng ta sẽ tìm hiểu từng kiểu kỹ hơn vào một workshop khác\nClusterIP: Đây là kiểu mặc định nếu không chỉ định kiểu cho service, đối với kiểu này thì chỉ các service bên trong cụm k8s mwois có thể access tới được.\nNodePort: Service sẽ mở một port trên node host service đó và sử dụng IP của node đó để expose service ra bên ngoài, cách này không được khuyến khích, hãy tưởng tượng nếu cụm k8s của bạn có 100 service và mở 100 port trên node, sẽ dẫn tới rất khó có thể kiểm soát được.\nLoadBalancer: Được sử dụng để expose các service ra bên ngoài bằng cách sử dụngLoadBalancer của các cloud.\nExternalName\n"
+},
+{
+	"uri": "//localhost:1313/vi/categories/",
+	"title": "Categories",
+	"tags": [],
+	"description": "",
+	"content": ""
+},
+{
+	"uri": "//localhost:1313/vi/tags/",
+	"title": "Tags",
+	"tags": [],
+	"description": "",
+	"content": ""
+}]
