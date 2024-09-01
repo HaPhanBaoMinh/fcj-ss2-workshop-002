@@ -12,21 +12,21 @@
     <title>Các thành phần của Ingress :: Cài đặt và Triển khai Dịch vụ Đầu tiên của Bạn với Kubernetes</title>
 
     
-    <link href="/css/nucleus.css?1725093529" rel="stylesheet">
-    <link href="/css/fontawesome-all.min.css?1725093529" rel="stylesheet">
-    <link href="/css/hybrid.css?1725093529" rel="stylesheet">
-    <link href="/css/featherlight.min.css?1725093529" rel="stylesheet">
-    <link href="/css/perfect-scrollbar.min.css?1725093529" rel="stylesheet">
-    <link href="/css/auto-complete.css?1725093529" rel="stylesheet">
-    <link href="/css/atom-one-dark-reasonable.css?1725093529" rel="stylesheet">
-    <link href="/css/theme.css?1725093529" rel="stylesheet">
-    <link href="/css/hugo-theme.css?1725093529" rel="stylesheet">
+    <link href="/css/nucleus.css?1725204786" rel="stylesheet">
+    <link href="/css/fontawesome-all.min.css?1725204786" rel="stylesheet">
+    <link href="/css/hybrid.css?1725204786" rel="stylesheet">
+    <link href="/css/featherlight.min.css?1725204786" rel="stylesheet">
+    <link href="/css/perfect-scrollbar.min.css?1725204786" rel="stylesheet">
+    <link href="/css/auto-complete.css?1725204786" rel="stylesheet">
+    <link href="/css/atom-one-dark-reasonable.css?1725204786" rel="stylesheet">
+    <link href="/css/theme.css?1725204786" rel="stylesheet">
+    <link href="/css/hugo-theme.css?1725204786" rel="stylesheet">
     
-    <link href="/css/theme-workshop.css?1725093529" rel="stylesheet">
+    <link href="/css/theme-workshop.css?1725204786" rel="stylesheet">
     
     
 
-    <script src="/js/jquery-3.3.1.min.js?1725093529"></script>
+    <script src="/js/jquery-3.3.1.min.js?1725204786"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -57,14 +57,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="/js/lunr.min.js?1725093529"></script>
-<script type="text/javascript" src="/js/auto-complete.js?1725093529"></script>
+<script type="text/javascript" src="/js/lunr.min.js?1725204786"></script>
+<script type="text/javascript" src="/js/auto-complete.js?1725204786"></script>
 <script type="text/javascript">
     
         var baseurl = "\/\/localhost:1313\/\/vi";
     
 </script>
-<script type="text/javascript" src="/js/search.js?1725093529"></script>
+<script type="text/javascript" src="/js/search.js?1725204786"></script>
 
     
   </div>
@@ -134,6 +134,154 @@
           
         
         </ul>
+              
+    </li>
+  
+ 
+
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/vi/2-install_microk8s/" title="Install microk8s" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/vi/2-install_microk8s/">
+           <b> 2. </b> Install microk8s
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+            
+          
+          
+          
+        
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/vi/2-install_microk8s/2.1-ubuntu/" title="Ubuntu" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/vi/2-install_microk8s/2.1-ubuntu/">
+           <b> 2.1 </b> Ubuntu
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/vi/2-install_microk8s/2.2-windows/" title="Windows" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/vi/2-install_microk8s/2.2-windows/">
+           <b> 2.2 </b> Windows
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/vi/2-install_microk8s/2.3-macos/" title="macOS" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/vi/2-install_microk8s/2.3-macos/">
+           <b> 2.3 </b> macOS
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+        
+        </ul>
+              
+    </li>
+  
+ 
+
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/vi/3-install_ingress_controller/" title="Tiến hành cài đặt Ingress Controller" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/vi/3-install_ingress_controller/">
+           <b> 3 </b> Tiến hành cài đặt Ingress Controller
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
               
     </li>
   
@@ -349,6 +497,8 @@
 <h2 id="2-ingress-controller">2. Ingress Controller</h2>
 <p>Ingress Controller là một daemon, nó sẽ thực hiện các quyết định định tuyến dựa trên thông tin trong Ingress Rule.</p>
 <p>Nói một cách dễ hiểu, Ingress Controller giống như một người điều phối và <strong>Ingress Rule</strong> là một bản hướng dẫn cho người điều phối đó để hướng dẫn traffic vào các service trong cluster.</p>
+<p>Các loại Ingress Controller phổ biến: Nginx Ingress Controller, Traefik, HAProxy, &hellip;</p>
+<p>Trong bài viết này, chúng ta sẽ sử dụng Nginx Ingress Controller.</p>
 <h2 id="3-ví-dụ-về-ingress">3. Ví dụ về Ingress:</h2>
 <pre><code>    apiVersion: networking.k8s.io/v1
     kind: Ingress
@@ -493,6 +643,91 @@
             
         
                     
+                        
+            
+            
+                
+                    
+                        
+                        
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
             
         
         
@@ -505,6 +740,8 @@
 			<a class="nav nav-prev" href="/vi/1-introduce_ingress/" title="Giới thiệu về Ingress"> <i class="fa fa-chevron-left"></i></a>
 		
 		
+			<a class="nav nav-next" href="/vi/2-install_microk8s/" title="Install microk8s" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
+		
 	
     </div>
 
@@ -513,19 +750,19 @@
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="/js/clipboard.min.js?1725093529"></script>
-    <script src="/js/perfect-scrollbar.min.js?1725093529"></script>
-    <script src="/js/perfect-scrollbar.jquery.min.js?1725093529"></script>
-    <script src="/js/jquery.sticky.js?1725093529"></script>
-    <script src="/js/featherlight.min.js?1725093529"></script>
-    <script src="/js/highlight.pack.js?1725093529"></script>
+    <script src="/js/clipboard.min.js?1725204786"></script>
+    <script src="/js/perfect-scrollbar.min.js?1725204786"></script>
+    <script src="/js/perfect-scrollbar.jquery.min.js?1725204786"></script>
+    <script src="/js/jquery.sticky.js?1725204786"></script>
+    <script src="/js/featherlight.min.js?1725204786"></script>
+    <script src="/js/highlight.pack.js?1725204786"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="/js/modernizr.custom-3.6.0.js?1725093529"></script>
-    <script src="/js/learn.js?1725093529"></script>
-    <script src="/js/hugo-learn.js?1725093529"></script>
+    <script src="/js/modernizr.custom-3.6.0.js?1725204786"></script>
+    <script src="/js/learn.js?1725204786"></script>
+    <script src="/js/hugo-learn.js?1725204786"></script>
 
-    <link href="/mermaid/mermaid.css?1725093529" rel="stylesheet" />
-    <script src="/mermaid/mermaid.js?1725093529"></script>
+    <link href="/mermaid/mermaid.css?1725204786" rel="stylesheet" />
+    <script src="/mermaid/mermaid.js?1725204786"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>

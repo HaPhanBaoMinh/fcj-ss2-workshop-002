@@ -9,7 +9,7 @@
 
     <link rel="icon" href="/images/favicon.png" type="image/png">
 
-    <title>Tags :: Cài đặt và Triển khai Dịch vụ Đầu tiên của Bạn với Kubernetes</title>
+    <title>Tiến hành cài đặt Ingress Controller :: Cài đặt và Triển khai Dịch vụ Đầu tiên của Bạn với Kubernetes</title>
 
     
     <link href="/css/nucleus.css?1725204786" rel="stylesheet">
@@ -36,7 +36,7 @@
     </style>
     
   </head>
-  <body class="" data-url="/vi/tags/">
+  <body class="" data-url="/vi/3-install_ingress_controller/">
     <nav id="sidebar" class="showVisitedLinks">
 
 
@@ -272,7 +272,7 @@
     
     <li data-nav-id="/vi/3-install_ingress_controller/" title="Tiến hành cài đặt Ingress Controller" class="dd-item 
         
-        
+        active
         
         ">
       <a href="/vi/3-install_ingress_controller/">
@@ -325,23 +325,11 @@
               
               
                   
-                    
-                    
-                      <option id="en" value="//localhost:1313/tags/">English</option>
-                    
-                  
-              
-                  
-              
-          
-              
-              
-                  
               
                   
                     
                     
-                      <option id="vi" value="//localhost:1313/vi/tags/" selected>Tiếng Việt</option>
+                      <option id="vi" value="//localhost:1313/vi/3-install_ingress_controller/" selected>Tiếng Việt</option>
                     
                   
               
@@ -425,7 +413,7 @@
             
           
           
-            <a href='/vi/'>Giới thiệu</a> > Tags
+            <a href='/vi/'>Giới thiệu</a> > Tiến hành cài đặt Ingress Controller
           
         
           
@@ -436,7 +424,16 @@
                 
                     <div class="progress">
     <div class="wrapper">
-<nav id="TableOfContents"></nav>
+<nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#1-cài-đặt-ingress-controller-bằng-add-on">1. Cài đặt Ingress Controller bằng Add-on</a></li>
+        <li><a href="#2-cài-đặt-ingress-controller-bằng-helm">2. Cài đặt Ingress Controller bằng Helm</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
     </div>
 </div>
 
@@ -452,9 +449,7 @@
           
             <h1>
               
-                taxonomy ::
-              
-              Tags
+              Tiến hành cài đặt Ingress Controller
             </h1>
           
 
@@ -462,11 +457,34 @@
 
 
 
+	<p>Trong bài viết này, tôi sử dụng MicroK8s để cài đặt Ingress Controller, và sử dụng Nginx Ingress Controller làm ví dụ.</p>
+<h3 id="1-cài-đặt-ingress-controller-bằng-add-on">1. Cài đặt Ingress Controller bằng Add-on</h3>
+<p>Phần ingress này nằm trong phần Add-on của MicroK8s, nên việc cài đặt khá đơn giản.</p>
+<pre><code>    microk8s enable ingress
+</code></pre>
+<p>Sau khi cài đặt xong, chúng ta sẽ thấy một Pod mới được tạo ra:</p>
+<p><img alt="Overview" src="/images/03.png">
+<img alt="Overview" src="/images/04.png"></p>
+<p>Tuy nhiên sau đây tôi sẽ hướng dẫn các bạn cách cài đặt Ingress Controller bằng cách sử dụng Helm.
+Phòng trường hợp bạn không sử dụng MicroK8s hoặc muốn tùy chỉnh nhiều hơn.</p>
+<h3 id="2-cài-đặt-ingress-controller-bằng-helm">2. Cài đặt Ingress Controller bằng Helm</h3>
+<p>Đầu tiên tôi sẽ disable Add-on Ingress trước:</p>
+<pre><code>    microk8s disable ingress
+</code></pre>
+<p><img alt="Overview" src="/images/05.png"></p>
+<p>Tiếp theo, chúng ta sẽ cài đặt Helm:</p>
+<pre><code>    sudo snap install helm --classic
+</code></pre>
+<p><img alt="Overview" src="/images/06.png"></p>
+<p>Sau khi cài đặt xong, chúng ta sẽ add Helm repository của Nginx Ingress Controller:</p>
+<pre><code>    helm repo add nginx-stable https://helm.nginx.com/stable
+    helm repo update
+</code></pre>
+<p>Tiếp theo, chúng ta sẽ cài đặt Nginx Ingress Controller:</p>
+<pre><code>    helm install nginx-ingress ingress-nginx/ingress-nginx</code></pre>
 
 
-<ul>
-	
-</ul>
+
 
 
 <footer class=" footline" >
@@ -607,6 +625,7 @@
             
                 
                     
+                    
                 
                 
 
@@ -626,6 +645,8 @@
 
 	 
 	 
+		
+			<a class="nav nav-prev" href="/vi/2-install_microk8s/2.3-macos/" title="macOS"> <i class="fa fa-chevron-left"></i></a>
 		
 		
 			<a class="nav nav-next" href="/vi/1-introduce_ingress/" title="Giới thiệu về Ingress" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>

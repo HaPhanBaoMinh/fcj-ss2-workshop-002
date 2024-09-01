@@ -39,6 +39,10 @@ Ingress Controller là một daemon, nó sẽ thực hiện các quyết định
 
 Nói một cách dễ hiểu, Ingress Controller giống như một người điều phối và **Ingress Rule** là một bản hướng dẫn cho người điều phối đó để hướng dẫn traffic vào các service trong cluster.
 
+Các loại Ingress Controller phổ biến: Nginx Ingress Controller, Traefik, HAProxy, ...
+
+Trong bài viết này, chúng ta sẽ sử dụng Nginx Ingress Controller.
+
 
 ## 3. Ví dụ về Ingress:
 

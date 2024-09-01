@@ -12,21 +12,21 @@
     <title>Giới thiệu về Ingress :: Cài đặt và Triển khai Dịch vụ Đầu tiên của Bạn với Kubernetes</title>
 
     
-    <link href="/css/nucleus.css?1725092063" rel="stylesheet">
-    <link href="/css/fontawesome-all.min.css?1725092063" rel="stylesheet">
-    <link href="/css/hybrid.css?1725092063" rel="stylesheet">
-    <link href="/css/featherlight.min.css?1725092063" rel="stylesheet">
-    <link href="/css/perfect-scrollbar.min.css?1725092063" rel="stylesheet">
-    <link href="/css/auto-complete.css?1725092063" rel="stylesheet">
-    <link href="/css/atom-one-dark-reasonable.css?1725092063" rel="stylesheet">
-    <link href="/css/theme.css?1725092063" rel="stylesheet">
-    <link href="/css/hugo-theme.css?1725092063" rel="stylesheet">
+    <link href="/css/nucleus.css?1725203660" rel="stylesheet">
+    <link href="/css/fontawesome-all.min.css?1725203660" rel="stylesheet">
+    <link href="/css/hybrid.css?1725203660" rel="stylesheet">
+    <link href="/css/featherlight.min.css?1725203660" rel="stylesheet">
+    <link href="/css/perfect-scrollbar.min.css?1725203660" rel="stylesheet">
+    <link href="/css/auto-complete.css?1725203660" rel="stylesheet">
+    <link href="/css/atom-one-dark-reasonable.css?1725203660" rel="stylesheet">
+    <link href="/css/theme.css?1725203660" rel="stylesheet">
+    <link href="/css/hugo-theme.css?1725203660" rel="stylesheet">
     
-    <link href="/css/theme-workshop.css?1725092063" rel="stylesheet">
+    <link href="/css/theme-workshop.css?1725203660" rel="stylesheet">
     
     
 
-    <script src="/js/jquery-3.3.1.min.js?1725092063"></script>
+    <script src="/js/jquery-3.3.1.min.js?1725203660"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -57,14 +57,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="/js/lunr.min.js?1725092063"></script>
-<script type="text/javascript" src="/js/auto-complete.js?1725092063"></script>
+<script type="text/javascript" src="/js/lunr.min.js?1725203660"></script>
+<script type="text/javascript" src="/js/auto-complete.js?1725203660"></script>
 <script type="text/javascript">
     
         var baseurl = "\/\/localhost:1313\/\/vi";
     
 </script>
-<script type="text/javascript" src="/js/search.js?1725092063"></script>
+<script type="text/javascript" src="/js/search.js?1725203660"></script>
 
     
   </div>
@@ -88,12 +88,52 @@
         
         ">
       <a href="/vi/1-introduce_ingress-copy/">
-           <b> 1. </b> Giới thiệu về Ingress
+           <b> 1 </b> Giới thiệu về Ingress
           
             <i class="fas fa-check read-icon"></i>
           
       </a>
       
+      
+        <ul>
+          
+          
+            
+          
+          
+          
+        
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/vi/1-introduce_ingress-copy/1.1-ingress_component/" title="Các thành phần của Ingress" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/vi/1-introduce_ingress-copy/1.1-ingress_component/">
+           <b> 1.1 </b> Các thành phần của Ingress
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+        
+        </ul>
               
     </li>
   
@@ -114,12 +154,52 @@
         
         ">
       <a href="/vi/1-introduce_ingress/">
-           <b> 1. </b> Giới thiệu về Ingress
+           <b> 1 </b> Giới thiệu về Ingress
           
             <i class="fas fa-check read-icon"></i>
           
       </a>
       
+      
+        <ul>
+          
+          
+            
+          
+          
+          
+        
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/vi/1-introduce_ingress/1.1-ingress_component/" title="Các thành phần của Ingress" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/vi/1-introduce_ingress/1.1-ingress_component/">
+           <b> 1.1 </b> Các thành phần của Ingress
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+        
+        </ul>
               
     </li>
   
@@ -264,9 +344,9 @@
     <div class="wrapper">
 <nav id="TableOfContents">
   <ul>
-    <li><a href="#vì-sao-cần-ingress">Vì sao cần Ingress?</a></li>
-    <li><a href="#khái-niệm-về-ingress-trong-kubernetes">Khái niệm về Ingress trong Kubernetes.</a></li>
-    <li><a href="#các-thành-phần-của-ingress">Các thành phần của Ingress</a></li>
+    <li><a href="#1-vì-sao-cần-ingress">1. Vì sao cần Ingress?</a></li>
+    <li><a href="#2-khái-niệm-về-ingress-trong-kubernetes">2. Khái niệm về Ingress trong Kubernetes.</a></li>
+    <li><a href="#3-các-thành-phần-của-ingress">3. Các thành phần của Ingress</a></li>
   </ul>
 </nav>
     </div>
@@ -293,16 +373,16 @@
 
 
 	<p><img alt="Overview" src="/images/01.webp"></p>
-<h2 id="vì-sao-cần-ingress">Vì sao cần Ingress?</h2>
+<h2 id="1-vì-sao-cần-ingress">1. Vì sao cần Ingress?</h2>
 <p>Trước đó trong workshop mình đã giới thiệu về Service, Deployment, Pod, Namespace, &hellip; và trong bài này mình sẽ giới thiệu cho các bạn về Ingress.</p>
 <p>Trong ws trước chúng ta đã có thể expose service ra bên ngoài cluster thông qua NodePort cách này vẫn hoạt động tốt nhưng không phải lúc nào cũng phù hợp, tổng số port trên một node là có hạn và không thể mở rộng, nếu có nhiều service cần expose ra bên ngoài thì việc quản lý port sẽ trở nên khó khăn.</p>
 <p>Hơn nữa NodePort chỉ cho phép expose service ra bên ngoài cluster thông qua port, không thể expose service ra bên ngoài cluster thông qua domain name.</p>
 <p>Vì vậy Ingress ra đời để giải quyết vấn đề trên, Ingress là một resource trong Kubernetes cho phép route traffic từ bên ngoài vào các service trong cluster.</p>
-<h2 id="khái-niệm-về-ingress-trong-kubernetes">Khái niệm về Ingress trong Kubernetes.</h2>
+<h2 id="2-khái-niệm-về-ingress-trong-kubernetes">2. Khái niệm về Ingress trong Kubernetes.</h2>
 <p>Ingress là một resource trong Kubernetes cho phép route traffic từ bên ngoài vào các service trong cluster.</p>
 <p>Như hình minh họa ở trên khi chúng ta dùng ingress thì chỉ có 1 cổng đi vào cluster, từ đó có thể route traffic vào các service trong cluster.</p>
 <p>Để dễ hiểu hơn, hãy tưởng tượng bạn có nhiều dịch vụ chạy bên trong cụm k8s của mình, mỗi dịch vụ giống như một cửa hàng trong một trung tâm thương mại. Ingress giống như một quầy lễ tân ở lối vào trung tâm thương mại, nơi sẽ hướng dẫn khách hàng (yêu cầu từ bên ngoài) đến đúng cửa hàng (dịch vụ) mà họ cần.</p>
-<h2 id="các-thành-phần-của-ingress">Các thành phần của Ingress</h2>
+<h2 id="3-các-thành-phần-của-ingress">3. Các thành phần của Ingress</h2>
 <p>Ingress bao gồm 2 thành phần chính:</p>
 <ul>
 <li>
@@ -359,8 +439,29 @@
 
                     
                     
+                        
+                    
                     
 
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
                     
             
         
@@ -370,8 +471,20 @@
             
                 
                     
+                
+                
+
+                    
+                    
                         
+                    
+                    
+
+                    
                         
+            
+            
+                
                     
                 
                 
@@ -380,6 +493,9 @@
                     
                     
 
+                    
+            
+        
                     
             
         
@@ -396,7 +512,7 @@
 			<a class="nav nav-prev" href="/vi/" title="Giới thiệu"> <i class="fa fa-chevron-left"></i></a>
 		
 		
-			<a class="nav nav-next" href="/vi/1-introduce_ingress/" title="Giới thiệu về Ingress" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
+			<a class="nav nav-next" href="/vi/1-introduce_ingress-copy/1.1-ingress_component/" title="Các thành phần của Ingress" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
 		
 	
     </div>
@@ -406,19 +522,19 @@
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="/js/clipboard.min.js?1725092063"></script>
-    <script src="/js/perfect-scrollbar.min.js?1725092063"></script>
-    <script src="/js/perfect-scrollbar.jquery.min.js?1725092063"></script>
-    <script src="/js/jquery.sticky.js?1725092063"></script>
-    <script src="/js/featherlight.min.js?1725092063"></script>
-    <script src="/js/highlight.pack.js?1725092063"></script>
+    <script src="/js/clipboard.min.js?1725203660"></script>
+    <script src="/js/perfect-scrollbar.min.js?1725203660"></script>
+    <script src="/js/perfect-scrollbar.jquery.min.js?1725203660"></script>
+    <script src="/js/jquery.sticky.js?1725203660"></script>
+    <script src="/js/featherlight.min.js?1725203660"></script>
+    <script src="/js/highlight.pack.js?1725203660"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="/js/modernizr.custom-3.6.0.js?1725092063"></script>
-    <script src="/js/learn.js?1725092063"></script>
-    <script src="/js/hugo-learn.js?1725092063"></script>
+    <script src="/js/modernizr.custom-3.6.0.js?1725203660"></script>
+    <script src="/js/learn.js?1725203660"></script>
+    <script src="/js/hugo-learn.js?1725203660"></script>
 
-    <link href="/mermaid/mermaid.css?1725092063" rel="stylesheet" />
-    <script src="/mermaid/mermaid.js?1725092063"></script>
+    <link href="/mermaid/mermaid.css?1725203660" rel="stylesheet" />
+    <script src="/mermaid/mermaid.js?1725203660"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>

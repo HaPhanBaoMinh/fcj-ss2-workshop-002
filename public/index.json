@@ -7,6 +7,34 @@
 	"content": "Installing and Deploying Your First Service with Kubernetes (Microk8s) 1. Overview Hello everyone! In this workshop, I will accompany you to explore the most basic concepts of Kubernetes and proceed to deploy your first service on K8s.\nFor K8s, there are many types and versions available. However, in a learning environment or lab setup, we can use lighter and more compact versions like Minikube, K3s, MicroK8s, \u0026hellip; In this series, I will use MicroK8s.\n2. Objectives The objective of this workshop is to provide you with the most fundamental concepts of K8s and how to deploy your first service.\nThis will also serve as a foundation for many upcoming workshops on K8s.\n3. Content Introduction to Kubernetes and MicroK8s. Installing MicroK8s. Creating and deploying your first service on Kubernetes. Testing and managing the deployed service. "
 },
 {
+	"uri": "//localhost:1313/2-install_microk8s/2.1-ubuntu/",
+	"title": "Ubuntu",
+	"tags": [],
+	"description": "",
+	"content": "1. Install MicroK8s on Linux sudo snap install microk8s --classic\rsudo snap alias microk8s.kubectl kubectl\r2. Check the status while Kubernetes starts microk8s status --wait-ready\r3. Turn on the services you want microk8s enable dashboard\rmicrok8s enable dns\rmicrok8s enable registry\r4. Start using Kubernetes microk8s kubectl get all --all-namespaces\r"
+},
+{
+	"uri": "//localhost:1313/2-install_microk8s/",
+	"title": "Install microk8s",
+	"tags": [],
+	"description": "",
+	"content": "\n1. Reference information for the installation process of MicroK8s 2. Reference information for the installation process of MiniKube "
+},
+{
+	"uri": "//localhost:1313/2-install_microk8s/2.2-windows/",
+	"title": "Windows",
+	"tags": [],
+	"description": "",
+	"content": "1. Download the installer for Windows 2. Run the Installer 3. Open a command line 4. Check the status while Kubernetes starts microk8s status --wait-ready\r5. Turn on the services you want microk8s enable dashboard\rmicrok8s enable dns\rmicrok8s enable registry\r6. Start using Kubernetes microk8s kubectl get all --all-namespaces\r"
+},
+{
+	"uri": "//localhost:1313/2-install_microk8s/2.3-macos/",
+	"title": "macOS",
+	"tags": [],
+	"description": "",
+	"content": "1. Install MicroK8s on macOS brew install ubuntu/microk8s/microk8s\rmicrok8s install\r2. Check the status while Kubernetes starts microk8s status --wait-ready\r3. Turn on the services you want microk8s enable dashboard\rmicrok8s enable dns\rmicrok8s enable registry\r4. Start using Kubernetes microk8s kubectl get all --all-namespaces\r"
+},
+{
 	"uri": "//localhost:1313/categories/",
 	"title": "Categories",
 	"tags": [],
