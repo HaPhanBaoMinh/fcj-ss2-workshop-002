@@ -12,21 +12,21 @@
     <title>Các thành phần của Ingress :: Cài đặt và Triển khai Dịch vụ Đầu tiên của Bạn với Kubernetes</title>
 
     
-    <link href="/css/nucleus.css?1725204786" rel="stylesheet">
-    <link href="/css/fontawesome-all.min.css?1725204786" rel="stylesheet">
-    <link href="/css/hybrid.css?1725204786" rel="stylesheet">
-    <link href="/css/featherlight.min.css?1725204786" rel="stylesheet">
-    <link href="/css/perfect-scrollbar.min.css?1725204786" rel="stylesheet">
-    <link href="/css/auto-complete.css?1725204786" rel="stylesheet">
-    <link href="/css/atom-one-dark-reasonable.css?1725204786" rel="stylesheet">
-    <link href="/css/theme.css?1725204786" rel="stylesheet">
-    <link href="/css/hugo-theme.css?1725204786" rel="stylesheet">
+    <link href="/css/nucleus.css?1725356056" rel="stylesheet">
+    <link href="/css/fontawesome-all.min.css?1725356056" rel="stylesheet">
+    <link href="/css/hybrid.css?1725356056" rel="stylesheet">
+    <link href="/css/featherlight.min.css?1725356056" rel="stylesheet">
+    <link href="/css/perfect-scrollbar.min.css?1725356056" rel="stylesheet">
+    <link href="/css/auto-complete.css?1725356056" rel="stylesheet">
+    <link href="/css/atom-one-dark-reasonable.css?1725356056" rel="stylesheet">
+    <link href="/css/theme.css?1725356056" rel="stylesheet">
+    <link href="/css/hugo-theme.css?1725356056" rel="stylesheet">
     
-    <link href="/css/theme-workshop.css?1725204786" rel="stylesheet">
+    <link href="/css/theme-workshop.css?1725356056" rel="stylesheet">
     
     
 
-    <script src="/js/jquery-3.3.1.min.js?1725204786"></script>
+    <script src="/js/jquery-3.3.1.min.js?1725356056"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -57,14 +57,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="/js/lunr.min.js?1725204786"></script>
-<script type="text/javascript" src="/js/auto-complete.js?1725204786"></script>
+<script type="text/javascript" src="/js/lunr.min.js?1725356056"></script>
+<script type="text/javascript" src="/js/auto-complete.js?1725356056"></script>
 <script type="text/javascript">
     
         var baseurl = "\/\/localhost:1313\/\/vi";
     
 </script>
-<script type="text/javascript" src="/js/search.js?1725204786"></script>
+<script type="text/javascript" src="/js/search.js?1725356056"></script>
 
     
   </div>
@@ -288,6 +288,32 @@
  
 
           
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/vi/4-public_service_with_ingress/" title="Sử dụng Ingress để Route Traffic bằng Subdomain" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/vi/4-public_service_with_ingress/">
+           <b> 4 </b> Sử dụng Ingress để Route Traffic bằng Subdomain
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+          
          
     </ul>
 
@@ -440,6 +466,7 @@
     </li>
     <li><a href="#2-ingress-controller">2. Ingress Controller</a></li>
     <li><a href="#3-ví-dụ-về-ingress">3. Ví dụ về Ingress:</a></li>
+    <li><a href="#3-ví-dụ-về-ingress-1">3. Ví dụ về Ingress:</a></li>
   </ul>
 </nav>
     </div>
@@ -500,6 +527,78 @@
 <p>Các loại Ingress Controller phổ biến: Nginx Ingress Controller, Traefik, HAProxy, &hellip;</p>
 <p>Trong bài viết này, chúng ta sẽ sử dụng Nginx Ingress Controller.</p>
 <h2 id="3-ví-dụ-về-ingress">3. Ví dụ về Ingress:</h2>
+<pre><code>    apiVersion: networking.k8s.io/v1
+    kind: Ingress
+    metadata:
+        name: example-ingress
+        namespace: default
+    annotations:
+        nginx.ingress.kubernetes.io/rewrite-target: /
+    spec:
+        rules:
+        - host: example.com
+            http:
+            paths:
+            - path: /service1
+                pathType: Prefix
+                backend:
+                service:
+                    name: service1
+                    port:
+                    number: 80
+            - path: /service2
+                pathType: Prefix
+                backend:
+                service:
+                    name: service2
+                    port:
+                    number: 80
+</code></pre>
+<ul>
+<li><strong>apiVersion: apps/v1</strong>: Khai báo phiên bản API của Kubernetes mà chúng ta sử dụng cho Ingress.</li>
+<li><strong>kind: Ingress</strong>: Loại resource mà chúng ta đang khai báo, ở đây là Ingress.</li>
+<li><strong>metadata</strong>: Thông tin về Ingress.
+<ul>
+<li><strong>name</strong>: Tên của Ingress.</li>
+<li><strong>namespace</strong>: Namespace mà Ingress thuộc về.</li>
+</ul>
+</li>
+<li><strong>annotations</strong>: Các thông tin bổ sung cho Ingress.
+<ul>
+<li><strong>nginx.ingress.kubernetes.io/rewrite-target</strong>: Thông tin bổ sung cho Ingress Controller.</li>
+</ul>
+</li>
+<li><strong>spec</strong>: Thông tin cấu hình cho Ingress.
+<ul>
+<li><strong>rules</strong>: Các rule của Ingress.
+<ul>
+<li><strong>host</strong>: Domain name mà Ingress sẽ route traffic vào.</li>
+<li><strong>http</strong>: Cấu hình cho giao thức HTTP.
+<ul>
+<li><strong>paths</strong>: Các đường dẫn mà Ingress sẽ route traffic vào.
+<ul>
+<li><strong>path</strong>: Đường dẫn mà Ingress sẽ route traffic vào.</li>
+<li><strong>pathType</strong>: Loại đường dẫn.</li>
+<li><strong>backend</strong>: Cấu hình backend cho đường dẫn.
+<ul>
+<li><strong>service</strong>: Tên service mà Ingress sẽ route traffic vào.</li>
+<li><strong>port</strong>: Port của service mà Ingress sẽ route traffic vào.
+<ul>
+<li><strong>number</strong>: Port của service mà Ingress sẽ route traffic vào.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="3-ví-dụ-về-ingress-1">3. Ví dụ về Ingress:</h2>
 <pre><code>    apiVersion: networking.k8s.io/v1
     kind: Ingress
     metadata:
@@ -728,6 +827,22 @@
             
         
                     
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
             
         
         
@@ -750,19 +865,19 @@
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="/js/clipboard.min.js?1725204786"></script>
-    <script src="/js/perfect-scrollbar.min.js?1725204786"></script>
-    <script src="/js/perfect-scrollbar.jquery.min.js?1725204786"></script>
-    <script src="/js/jquery.sticky.js?1725204786"></script>
-    <script src="/js/featherlight.min.js?1725204786"></script>
-    <script src="/js/highlight.pack.js?1725204786"></script>
+    <script src="/js/clipboard.min.js?1725356056"></script>
+    <script src="/js/perfect-scrollbar.min.js?1725356056"></script>
+    <script src="/js/perfect-scrollbar.jquery.min.js?1725356056"></script>
+    <script src="/js/jquery.sticky.js?1725356056"></script>
+    <script src="/js/featherlight.min.js?1725356056"></script>
+    <script src="/js/highlight.pack.js?1725356056"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="/js/modernizr.custom-3.6.0.js?1725204786"></script>
-    <script src="/js/learn.js?1725204786"></script>
-    <script src="/js/hugo-learn.js?1725204786"></script>
+    <script src="/js/modernizr.custom-3.6.0.js?1725356056"></script>
+    <script src="/js/learn.js?1725356056"></script>
+    <script src="/js/hugo-learn.js?1725356056"></script>
 
-    <link href="/mermaid/mermaid.css?1725204786" rel="stylesheet" />
-    <script src="/mermaid/mermaid.js?1725204786"></script>
+    <link href="/mermaid/mermaid.css?1725356056" rel="stylesheet" />
+    <script src="/mermaid/mermaid.js?1725356056"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>

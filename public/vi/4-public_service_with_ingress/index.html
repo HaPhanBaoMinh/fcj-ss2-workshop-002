@@ -9,7 +9,7 @@
 
     <link rel="icon" href="/images/favicon.png" type="image/png">
 
-    <title>Tiến hành cài đặt Ingress Controller :: Cài đặt và Triển khai Dịch vụ Đầu tiên của Bạn với Kubernetes</title>
+    <title>Sử dụng Ingress để Route Traffic bằng Subdomain :: Cài đặt và Triển khai Dịch vụ Đầu tiên của Bạn với Kubernetes</title>
 
     
     <link href="/css/nucleus.css?1725356056" rel="stylesheet">
@@ -36,7 +36,7 @@
     </style>
     
   </head>
-  <body class="" data-url="/vi/3-install_ingress_controller/">
+  <body class="" data-url="/vi/4-public_service_with_ingress/">
     <nav id="sidebar" class="showVisitedLinks">
 
 
@@ -272,7 +272,7 @@
     
     <li data-nav-id="/vi/3-install_ingress_controller/" title="Tiến hành cài đặt Ingress Controller" class="dd-item 
         
-        active
+        
         
         ">
       <a href="/vi/3-install_ingress_controller/">
@@ -298,7 +298,7 @@
     
     <li data-nav-id="/vi/4-public_service_with_ingress/" title="Sử dụng Ingress để Route Traffic bằng Subdomain" class="dd-item 
         
-        
+        active
         
         ">
       <a href="/vi/4-public_service_with_ingress/">
@@ -355,7 +355,7 @@
                   
                     
                     
-                      <option id="vi" value="//localhost:1313/vi/3-install_ingress_controller/" selected>Tiếng Việt</option>
+                      <option id="vi" value="//localhost:1313/vi/4-public_service_with_ingress/" selected>Tiếng Việt</option>
                     
                   
               
@@ -439,7 +439,7 @@
             
           
           
-            <a href='/vi/'>Giới thiệu</a> > Tiến hành cài đặt Ingress Controller
+            <a href='/vi/'>Giới thiệu</a> > Sử dụng Ingress để Route Traffic bằng Subdomain
           
         
           
@@ -454,8 +454,10 @@
   <ul>
     <li>
       <ul>
-        <li><a href="#1-cài-đặt-ingress-controller-bằng-add-on">1. Cài đặt Ingress Controller bằng Add-on</a></li>
-        <li><a href="#2-cài-đặt-ingress-controller-bằng-helm">2. Cài đặt Ingress Controller bằng Helm</a></li>
+        <li><a href="#1-giới-thiệu">1. Giới thiệu</a></li>
+        <li><a href="#2-tạo-2-deployment-và-service">2. Tạo 2 deployment và service</a></li>
+        <li><a href="#3-tiến-hành-cấu-hình-ingress-để-route-traffic">3. Tiến hành cấu hình Ingress để route traffic</a></li>
+        <li><a href="#4-kiểm-tra-kết-quả">4. Kiểm tra kết quả</a></li>
       </ul>
     </li>
   </ul>
@@ -475,7 +477,7 @@
           
             <h1>
               
-              Tiến hành cài đặt Ingress Controller
+              Sử dụng Ingress để Route Traffic bằng Subdomain
             </h1>
           
 
@@ -483,31 +485,91 @@
 
 
 
-	<p>Trong bài viết này, tôi sử dụng MicroK8s để cài đặt Ingress Controller, và sử dụng Nginx Ingress Controller làm ví dụ.</p>
-<h3 id="1-cài-đặt-ingress-controller-bằng-add-on">1. Cài đặt Ingress Controller bằng Add-on</h3>
-<p>Phần ingress này nằm trong phần Add-on của MicroK8s, nên việc cài đặt khá đơn giản.</p>
-<pre><code>    microk8s enable ingress
+	<p>Trong bài viết này, tôi sẽ hướng dẫn các bạn cách sử dụng Ingress để route traffic bằng Subdomain.</p>
+<h3 id="1-giới-thiệu">1. Giới thiệu</h3>
+<p>Chúng ta sẽ tiến hành tạo 2 service, mỗi service sẽ được route traffic bằng 1 subdomain khác nhau.</p>
+<p>service1.example.com -&gt; service1</p>
+<p>service2.example.com -&gt; service1</p>
+<h3 id="2-tạo-2-deployment-và-service">2. Tạo 2 deployment và service</h3>
+<p>Ở đây tôi tạo 2 deployment và service đơn giản và sử dụng image <code>nginx</code>:</p>
+<p><img alt="Overview" src="/images/07.png"></p>
+<p>Tiến hành deploy 2 file này:</p>
+<pre><code>    kubectl apply -f service1.yaml
+    kubectl apply -f service2.yaml
 </code></pre>
-<p>Sau khi cài đặt xong, chúng ta sẽ thấy một Pod mới được tạo ra:</p>
-<p><img alt="Overview" src="/images/03.png">
-<img alt="Overview" src="/images/04.png"></p>
-<p>Tuy nhiên sau đây tôi sẽ hướng dẫn các bạn cách cài đặt Ingress Controller bằng cách sử dụng Helm.
-Phòng trường hợp bạn không sử dụng MicroK8s hoặc muốn tùy chỉnh nhiều hơn.</p>
-<h3 id="2-cài-đặt-ingress-controller-bằng-helm">2. Cài đặt Ingress Controller bằng Helm</h3>
-<p>Đầu tiên tôi sẽ disable Add-on Ingress trước:</p>
-<pre><code>    microk8s disable ingress
+<p><img alt="Overview" src="/images/08.png"></p>
+<p>Kiểm tra xem mọi thứ đã ổn chưa:</p>
+<pre><code>    kubectl get pods
 </code></pre>
-<p><img alt="Overview" src="/images/05.png"></p>
-<p>Tiếp theo, chúng ta sẽ cài đặt Helm:</p>
-<pre><code>    sudo snap install helm --classic
+<p><img alt="Overview" src="/images/09.png"></p>
+<h3 id="3-tiến-hành-cấu-hình-ingress-để-route-traffic">3. Tiến hành cấu hình Ingress để route traffic</h3>
+<p><img alt="Overview" src="/images/10.png"></p>
+<ul>
+<li><strong>apiVersion: networking.k9s.io/v1</strong>: Khai báo phiên bản API của Kubernetes mà chúng ta sử dụng cho Ingress.</li>
+<li><strong>kind: Ingress</strong>: Loại resource mà chúng ta đang khai báo, ở đây là Ingress.</li>
+<li><strong>metadata</strong>: Thông tin về Ingress
+<ul>
+<li><strong>name</strong>: Tên của Ingress</li>
+<li><strong>annotations</strong>: Các thông tin bổ sung cho Ingress
+<ul>
+<li><strong>nginx.ingress.kubernetes.io/rewrite-target</strong>: Thông tin bổ sung cho NGINX Ingress Controller, dùng để rewrite đường dẫn của request thành / trước khi gửi đến backend.</li>
+</ul>
+</li>
+<li><strong>spec</strong>: Thông tin cấu hình cho Ingress
+<ul>
+<li><strong>rules</strong>: Các quy tắc (rules) mà Ingress sẽ sử dụng để route traffic vào các dịch vụ (service) backend</li>
+<li><strong>host</strong>: Subdomain mà chúng ta muốn route trafficDomain name mà Ingress sẽ route traffic vào. Ở đây, có hai domain: service1.example.com và service3.example.com.
+<ul>
+<li><strong>http</strong>: Cấu hình cho HTTP
+<ul>
+<li><strong>paths</strong>: Các path mà chúng ta muốn route traffic
+<ul>
+<li><strong>path</strong>: Đường dẫn mà chúng ta muốn route trafficĐường dẫn mà Ingress sẽ route traffic vào. Trong ví dụ này, đường dẫn là / trên cả hai domain.</li>
+<li><strong>pathType</strong>: Loại path, ở đây là PrefixpathType: Loại đường dẫn. Ở đây, Prefix nghĩa là bất kỳ yêu cầu nào bắt đầu với đường dẫn này sẽ được route đến backend.</li>
+<li><strong>backend:</strong> Cấu hình backend cho đường dẫn.
+<ul>
+<li><strong>service:</strong> Tên service mà Ingress sẽ route traffic vào.</li>
+<li><strong>port:</strong> Port của service mà Ingress sẽ route traffic vào.</li>
+<li><strong>number:</strong> Số port của service mà Ingress sẽ route traffic vào. Ở đây, cả hai service đều lắng nghe trên port 80.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>Tiến hành deploy file cấu hình Ingress:</p>
+<pre><code>  kubectl apply -f ingress.yaml
 </code></pre>
-<p><img alt="Overview" src="/images/06.png"></p>
-<p>Sau khi cài đặt xong, chúng ta sẽ add Helm repository của Nginx Ingress Controller:</p>
-<pre><code>    helm repo add nginx-stable https://helm.nginx.com/stable
-    helm repo update
+<p><img alt="Overview" src="/images/11.png"></p>
+<p>Kiểm tra xem Ingress đã được tạo chưa:</p>
+<pre><code>  kubectl get ingress
 </code></pre>
-<p>Tiếp theo, chúng ta sẽ cài đặt Nginx Ingress Controller:</p>
-<pre><code>    helm install nginx-ingress ingress-nginx/ingress-nginx</code></pre>
+<p><img alt="Overview" src="/images/12.png"></p>
+<p>Như vậy, chúng ta đã tạo Ingress để route traffic bằng Subdomain.</p>
+<h3 id="4-kiểm-tra-kết-quả">4. Kiểm tra kết quả</h3>
+<p>Đầu tiên các bạn thấy thông tin IP của máy host:</p>
+<pre><code>  ifconfig
+</code></pre>
+<p>Ở đây thông tin IP của máy host mình là: 192.168.1.4</p>
+<p>Để kiểm tra kết quả, chúng ta cần thêm 2 dòng vào file <code>hosts</code>, hiện tại mình đang sử dụng hệ điều hành Ubuntu nên file <code>hosts</code> nằm ở đường dẫn <code>/etc/hosts</code>:</p>
+<pre><code>  sudo nano /etc/hosts
+</code></pre>
+<p>Thêm 2 dòng sau vào file <code>hosts</code>:</p>
+<pre><code>192.168.1.4 service1.example.com
+192.168.1.4 service2.example.com
+</code></pre>
+<p><img alt="Overview" src="/images/13.png"></p>
+<p>Tiếp theo, mở trình duyệt và truy cập vào 2 domain <code>service1.example.com</code> và <code>service2.example.com</code>:</p>
+<p><img alt="Overview" src="/images/14.png">
+<img alt="Overview" src="/images/15.png"></p>
+<p>Như vậy, chúng ta đã sử dụng Ingress để route traffic bằng Subdomain.</p>
 
 
 
@@ -651,7 +713,6 @@ Phòng trường hợp bạn không sử dụng MicroK8s hoặc muốn tùy ch�
             
                 
                     
-                    
                 
                 
 
@@ -668,8 +729,6 @@ Phòng trường hợp bạn không sử dụng MicroK8s hoặc muốn tùy ch�
             
                 
                     
-                        
-                        
                     
                 
                 
@@ -691,10 +750,10 @@ Phòng trường hợp bạn không sử dụng MicroK8s hoặc muốn tùy ch�
 	 
 	 
 		
-			<a class="nav nav-prev" href="/vi/2-install_microk8s/2.3-macos/" title="macOS"> <i class="fa fa-chevron-left"></i></a>
+			<a class="nav nav-prev" href="/vi/3-install_ingress_controller/" title="Tiến hành cài đặt Ingress Controller"> <i class="fa fa-chevron-left"></i></a>
 		
 		
-			<a class="nav nav-next" href="/vi/4-public_service_with_ingress/" title="Sử dụng Ingress để Route Traffic bằng Subdomain" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
+			<a class="nav nav-next" href="/vi/1-introduce_ingress/" title="Giới thiệu về Ingress" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
 		
 	
     </div>

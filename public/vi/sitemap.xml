@@ -18,6 +18,56 @@
   </url><url>
     <loc>//localhost:1313/vi/1-introduce_ingress/</loc>
   </url><url>
+    <loc>//localhost:1313/vi/2-install_microk8s/2.1-ubuntu/</loc>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="//localhost:1313/2-install_microk8s/2.1-ubuntu/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="vi"
+                href="//localhost:1313/vi/2-install_microk8s/2.1-ubuntu/"
+                />
+  </url><url>
+    <loc>//localhost:1313/vi/2-install_microk8s/</loc>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="//localhost:1313/2-install_microk8s/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="vi"
+                href="//localhost:1313/vi/2-install_microk8s/"
+                />
+  </url><url>
+    <loc>//localhost:1313/vi/2-install_microk8s/2.2-windows/</loc>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="//localhost:1313/2-install_microk8s/2.2-windows/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="vi"
+                href="//localhost:1313/vi/2-install_microk8s/2.2-windows/"
+                />
+  </url><url>
+    <loc>//localhost:1313/vi/2-install_microk8s/2.3-macos/</loc>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="//localhost:1313/2-install_microk8s/2.3-macos/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="vi"
+                href="//localhost:1313/vi/2-install_microk8s/2.3-macos/"
+                />
+  </url><url>
+    <loc>//localhost:1313/vi/3-install_ingress_controller/</loc>
+  </url><url>
     <loc>//localhost:1313/vi/categories/</loc>
     <xhtml:link
                 rel="alternate"

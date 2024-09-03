@@ -43,6 +43,53 @@ Các loại Ingress Controller phổ biến: Nginx Ingress Controller, Traefik, 
 
 Trong bài viết này, chúng ta sẽ sử dụng Nginx Ingress Controller.
 
+## 3. Ví dụ về Ingress:
+
+        apiVersion: networking.k8s.io/v1
+        kind: Ingress
+        metadata:
+            name: example-ingress
+            namespace: default
+        annotations:
+            nginx.ingress.kubernetes.io/rewrite-target: /
+        spec:
+            rules:
+            - host: example.com
+                http:
+                paths:
+                - path: /service1
+                    pathType: Prefix
+                    backend:
+                    service:
+                        name: service1
+                        port:
+                        number: 80
+                - path: /service2
+                    pathType: Prefix
+                    backend:
+                    service:
+                        name: service2
+                        port:
+                        number: 80
+
+- **apiVersion: apps/v1**: Khai báo phiên bản API của Kubernetes mà chúng ta sử dụng cho Ingress.
+- **kind: Ingress**: Loại resource mà chúng ta đang khai báo, ở đây là Ingress.
+- **metadata**: Thông tin về Ingress.
+  - **name**: Tên của Ingress.
+  - **namespace**: Namespace mà Ingress thuộc về.
+- **annotations**: Các thông tin bổ sung cho Ingress.
+  - **nginx.ingress.kubernetes.io/rewrite-target**: Thông tin bổ sung cho Ingress Controller.
+- **spec**: Thông tin cấu hình cho Ingress.
+  - **rules**: Các rule của Ingress.
+    - **host**: Domain name mà Ingress sẽ route traffic vào.
+    - **http**: Cấu hình cho giao thức HTTP.
+      - **paths**: Các đường dẫn mà Ingress sẽ route traffic vào.
+        - **path**: Đường dẫn mà Ingress sẽ route traffic vào.
+        - **pathType**: Loại đường dẫn.
+        - **backend**: Cấu hình backend cho đường dẫn.
+          - **service**: Tên service mà Ingress sẽ route traffic vào.
+          - **port**: Port của service mà Ingress sẽ route traffic vào. 
+            - **number**: Port của service mà Ingress sẽ route traffic vào.
 
 ## 3. Ví dụ về Ingress:
 
