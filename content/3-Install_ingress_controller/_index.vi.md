@@ -3,7 +3,7 @@ title : "Tiến hành cài đặt Ingress Controller"
 date :  "`r Sys.Date()`" 
 weight : 3
 chapter : false
-pre : " <b> 3 </b> "
+pre : " <b> 3. </b> "
 ---
 
 Trong bài viết này, tôi sử dụng MicroK8s để cài đặt Ingress Controller, và sử dụng Nginx Ingress Controller làm ví dụ.

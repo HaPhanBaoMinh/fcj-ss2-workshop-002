@@ -1,43 +1,41 @@
 ---
 title : "Sử dụng Ingress để Route Traffic bằng Subdomain"
 date :  "`r Sys.Date()`" 
-weight : 4
+weight : 5 
 chapter : false
-pre : " <b> 4 </b> "
+pre : " <b> 5. </b> "
 ---
 
-Trong bài viết này, tôi sẽ hướng dẫn các bạn cách sử dụng Ingress để route traffic bằng Subdomain.
+Như phần trước mình đã hướng dẫn các bạn public một service và route traffic của nó bằng subdomain. Trong phần này mình sẽ hướng dẫn các bạn cách sử dụng Ingress để route traffic bằng path.
 
 ### 1. Giới thiệu
 
-Chúng ta sẽ tiến hành tạo 2 service, mỗi service sẽ được route traffic bằng 1 subdomain khác nhau.
+Có thể hiểu đơn giản là chúng ta sẽ route traffic vào service dựa trên đường dẫn của request.
 
-service1.example.com -> service1
+example.com/service1 -> service1
 
-service2.example.com -> service1
+example.com/service2 -> service2
 
 ### 2. Tạo 2 deployment và service
 
-Ở đây tôi tạo 2 deployment và service đơn giản và sử dụng image `nginx`:
+Ở đây mình tạo 2 deployment và service đơn giản và sử dụng image `nginx`, ở đây mình dùng luôn 2 service ở phần trước:
 
-![Overview](/images/07.png)
+![Overview](/images/16.png)
 
 Tiến hành deploy 2 file này:
 
         kubectl apply -f service1.yaml
         kubectl apply -f service2.yaml
 
-![Overview](/images/08.png)
-
 Kiểm tra xem mọi thứ đã ổn chưa:
 
         kubectl get pods
 
-![Overview](/images/09.png)
+![Overview](/images/17.png)
 
 ### 3. Tiến hành cấu hình Ingress để route traffic
 
-![Overview](/images/10.png)
+![Overview](/images/18.png)
 
 - **apiVersion: networking.k9s.io/v1**: Khai báo phiên bản API của Kubernetes mà chúng ta sử dụng cho Ingress.
 - **kind: Ingress**: Loại resource mà chúng ta đang khai báo, ở đây là Ingress.
@@ -50,7 +48,7 @@ Kiểm tra xem mọi thứ đã ổn chưa:
     - **host**: Subdomain mà chúng ta muốn route trafficDomain name mà Ingress sẽ route traffic vào. Ở đây, có hai domain: service1.example.com và service3.example.com.
         - **http**: Cấu hình cho HTTP
           - **paths**: Các path mà chúng ta muốn route traffic
-            - **path**: Đường dẫn mà chúng ta muốn route trafficĐường dẫn mà Ingress sẽ route traffic vào. Trong ví dụ này, đường dẫn là / trên cả hai domain.
+            - **path**: Đường dẫn mà chúng ta muốn route traffic Đường dẫn mà Ingress sẽ route traffic vào. Trong ví dụ này, đường dẫn là /service1 route traffic vào service1 và /service2 route traffic vào service2.
             - **pathType**: Loại path, ở đây là PrefixpathType: Loại đường dẫn. Ở đây, Prefix nghĩa là bất kỳ yêu cầu nào bắt đầu với đường dẫn này sẽ được route đến backend.
             - **backend:** Cấu hình backend cho đường dẫn.
               - **service:** Tên service mà Ingress sẽ route traffic vào.
@@ -61,15 +59,15 @@ Tiến hành deploy file cấu hình Ingress:
 
       kubectl apply -f ingress.yaml
 
-![Overview](/images/11.png)
+![Overview](/images/19.png)
 
 Kiểm tra xem Ingress đã được tạo chưa:
 
       kubectl get ingress
 
-![Overview](/images/12.png)
+![Overview](/images/20.png)
 
-Như vậy, chúng ta đã tạo Ingress để route traffic bằng Subdomain.
+Như vậy, chúng ta đã tạo Ingress để route traffic bằng path.
 
 ### 4. Kiểm tra kết quả
 
@@ -85,14 +83,14 @@ Như vậy, chúng ta đã tạo Ingress để route traffic bằng Subdomain.
 
 Thêm 2 dòng sau vào file `hosts`:
 
-    192.168.1.4 service1.example.com
-    192.168.1.4 service2.example.com
+    192.168.1.4 example.com
 
-![Overview](/images/13.png)
+![Overview](/images/21.png)
 
-Tiếp theo, mở trình duyệt và truy cập vào 2 domain `service1.example.com` và `service2.example.com`:
+Tiếp theo, mở trình duyệt và truy cập vào 2 domain `example.com/service1` và `example.com/service2`:
 
-![Overview](/images/14.png)
-![Overview](/images/15.png)
+![Overview](/images/22.png)
+![Overview](/images/23.png)
 
-Như vậy, chúng ta đã sử dụng Ingress để route traffic bằng Subdomain.
+Như vậy, chúng ta đã sử dụng Ingress để route traffic bằng path.
+

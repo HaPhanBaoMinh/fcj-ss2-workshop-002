@@ -6,26 +6,26 @@ chapter: false
 pre: " <b> 1. </b> "
 ---
 
-# Installing and Deploying Your First Service with Kubernetes (Microk8s)
+# Public a Service and Route Traffic by Subdomain and Path
 
-![Overview](/fcj-ss2-workshop-002/images/1-Basic_concepts./01.png)
+![Overview](/images/01.webp)
 
 ## 1. Overview
 
-Hello everyone! In this workshop, I will accompany you to explore the most basic concepts of Kubernetes and proceed to deploy your first service on K8s.
+Hello everyone! In this workshop, I will accompany you to explore an important concept in Kubernetes, which is ingress, and proceed to public a service and route traffic using subdomains and paths.
 
-For K8s, there are many types and versions available. However, in a learning environment or lab setup, we can use lighter and more compact versions like Minikube, K3s, MicroK8s, ... In this series, I will use MicroK8s.
+In Kubernetes, there are many types and versions available, but in a learning or lab environment, we can use more compact and lightweight versions of Kubernetes like Minikube, K3s, MicroK8s, etc. In this series, I will be using MicroK8s.
 
 ## 2. Objectives
 
-The objective of this workshop is to provide you with the most fundamental concepts of K8s and how to deploy your first service.
+The objective of this workshop series is to provide you with the fundamental concepts of Kubernetes.
 
-This will also serve as a foundation for many upcoming workshops on K8s.
+This will also serve as a foundation for many future workshop series on Kubernetes.
 
 ## 3. Content
 
-- Introduction to Kubernetes and MicroK8s.
+- Introduction to Ingress.
 - Installing MicroK8s.
-- Creating and deploying your first service on Kubernetes.
-- Testing and managing the deployed service.
-
+- Installing Ingress Controller.
+- Public a service and route traffic using subdomains.
+- Public a service and route traffic using paths.

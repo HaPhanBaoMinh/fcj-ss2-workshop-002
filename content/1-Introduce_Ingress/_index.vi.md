@@ -3,7 +3,7 @@ title : "Giới thiệu về Ingress"
 date :  "`r Sys.Date()`" 
 weight : 1
 chapter : false
-pre : " <b> 1 </b> "
+pre : " <b> 1. </b> "
 ---
 
 ![Overview](/images/01.webp)

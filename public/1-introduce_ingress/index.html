@@ -3,30 +3,30 @@
   <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="generator" content="Hugo 0.133.1">
+    <meta name="generator" content="Hugo 0.134.0">
     <meta name="description" content="">
 <meta name="author" content="journeyoftheaverageguy@gmail.com">
 
     <link rel="icon" href="/images/favicon.png" type="image/png">
 
-    <title>Core Concepts :: Installing and Deploying Your First Service with Kubernetes</title>
+    <title>Introduction to Ingress :: Installing and Deploying Your First Service with Kubernetes</title>
 
     
-    <link href="/css/nucleus.css?1725091322" rel="stylesheet">
-    <link href="/css/fontawesome-all.min.css?1725091322" rel="stylesheet">
-    <link href="/css/hybrid.css?1725091322" rel="stylesheet">
-    <link href="/css/featherlight.min.css?1725091322" rel="stylesheet">
-    <link href="/css/perfect-scrollbar.min.css?1725091322" rel="stylesheet">
-    <link href="/css/auto-complete.css?1725091322" rel="stylesheet">
-    <link href="/css/atom-one-dark-reasonable.css?1725091322" rel="stylesheet">
-    <link href="/css/theme.css?1725091322" rel="stylesheet">
-    <link href="/css/hugo-theme.css?1725091322" rel="stylesheet">
+    <link href="/css/nucleus.css?1725550667" rel="stylesheet">
+    <link href="/css/fontawesome-all.min.css?1725550667" rel="stylesheet">
+    <link href="/css/hybrid.css?1725550667" rel="stylesheet">
+    <link href="/css/featherlight.min.css?1725550667" rel="stylesheet">
+    <link href="/css/perfect-scrollbar.min.css?1725550667" rel="stylesheet">
+    <link href="/css/auto-complete.css?1725550667" rel="stylesheet">
+    <link href="/css/atom-one-dark-reasonable.css?1725550667" rel="stylesheet">
+    <link href="/css/theme.css?1725550667" rel="stylesheet">
+    <link href="/css/hugo-theme.css?1725550667" rel="stylesheet">
     
-    <link href="/css/theme-workshop.css?1725091322" rel="stylesheet">
+    <link href="/css/theme-workshop.css?1725550667" rel="stylesheet">
     
     
 
-    <script src="/js/jquery-3.3.1.min.js?1725091322"></script>
+    <script src="/js/jquery-3.3.1.min.js?1725550667"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -57,14 +57,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="/js/lunr.min.js?1725091322"></script>
-<script type="text/javascript" src="/js/auto-complete.js?1725091322"></script>
+<script type="text/javascript" src="/js/lunr.min.js?1725550667"></script>
+<script type="text/javascript" src="/js/auto-complete.js?1725550667"></script>
 <script type="text/javascript">
     
         var baseurl = "\/\/localhost:1313\/";
     
 </script>
-<script type="text/javascript" src="/js/search.js?1725091322"></script>
+<script type="text/javascript" src="/js/search.js?1725550667"></script>
 
     
   </div>
@@ -82,13 +82,305 @@
  
   
     
-    <li data-nav-id="/1-introduce_ingress/" title="Core Concepts" class="dd-item 
+    <li data-nav-id="/1-introduce_ingress/" title="Introduction to Ingress" class="dd-item 
         
         active
         
         ">
       <a href="/1-introduce_ingress/">
-          <b> 1. </b>Core Concepts
+           <b> 1. </b> Introduction to Ingress
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+            
+          
+          
+          
+        
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/1-introduce_ingress/1.1-ingress_component/" title="Ingress Components" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/1-introduce_ingress/1.1-ingress_component/">
+           <b> 1.1 </b> Ingress Components
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+        
+        </ul>
+              
+    </li>
+  
+ 
+
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/2-install_microk8s/" title="Install microk8s" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/2-install_microk8s/">
+          <b> 2. </b>Install microk8s
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+            
+          
+          
+          
+        
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/2-install_microk8s/2.1-ubuntu/" title="Ubuntu" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/2-install_microk8s/2.1-ubuntu/">
+           <b> 2.1 </b> Ubuntu
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/2-install_microk8s/2.2-windows/" title="Windows" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/2-install_microk8s/2.2-windows/">
+           <b> 2.2 </b> Windows
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/2-install_microk8s/2.3-macos/" title="macOS" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/2-install_microk8s/2.3-macos/">
+           <b> 2.3 </b> macOS
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+            
+          
+        
+        </ul>
+              
+    </li>
+  
+ 
+
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/3-install_ingress_controller/" title="Installing Ingress Controller" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/3-install_ingress_controller/">
+           <b> 3. </b> Installing Ingress Controller
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/4-public_service_with_ingress-1/" title="Using Ingress to Route Traffic by Subdomain" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/4-public_service_with_ingress-1/">
+           <b> 4. </b> Using Ingress to Route Traffic by Subdomain
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/5-public_service_with_ingress-2/" title="Using Ingress to Route Traffic by Path" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/5-public_service_with_ingress-2/">
+           <b> 5. </b> Using Ingress to Route Traffic by Path
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/6-canary_deployments/" title="Configuring Canary Deployments" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/6-canary_deployments/">
+           <b> 6. </b> Configuring Canary Deployments
+          
+            <i class="fas fa-check read-icon"></i>
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/7-whitelist_deployments/" title="Configuring Ingress with IP Whitelist" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/7-whitelist_deployments/">
+           <b> 7. </b> Configuring Ingress with IP Whitelist
           
             <i class="fas fa-check read-icon"></i>
           
@@ -237,7 +529,7 @@
             
           
           
-            <a href='/'>Introduction</a> > Core Concepts
+            <a href='/'>Introduction</a> > Introduction to Ingress
           
         
           
@@ -250,9 +542,9 @@
     <div class="wrapper">
 <nav id="TableOfContents">
   <ul>
-    <li><a href="#1-what-is-k8s-and-why-should-we-use-it">1. What is K8s and why should we use it?</a></li>
-    <li><a href="#2-core-concepts-in-k8s">2. Core Concepts in K8s</a></li>
-    <li><a href="#3-references">3. References</a></li>
+    <li><a href="#1-why-do-we-need-ingress">1. Why do we need Ingress?</a></li>
+    <li><a href="#2-the-concept-of-ingress-in-kubernetes">2. The concept of Ingress in Kubernetes</a></li>
+    <li><a href="#3-components-of-ingress">3. Components of Ingress</a></li>
   </ul>
 </nav>
     </div>
@@ -270,7 +562,7 @@
           
             <h1>
               
-              Core Concepts
+              Introduction to Ingress
             </h1>
           
 
@@ -278,37 +570,27 @@
 
 
 
-	<p><img alt="Overview" src="/fcj-ss2-workshop-002/images/1-Basic_concepts./03.png"></p>
-<h2 id="1-what-is-k8s-and-why-should-we-use-it">1. What is K8s and why should we use it?</h2>
-<p>When you search for this question on the internet, you can find many definitions and explanations mentioned. Here is my explanation of this technology.</p>
-<p>Imagine that in a construction project, there are many departments responsible for different tasks, such as:</p>
+	<p><img alt="Overview" src="/images/01.webp"></p>
+<h2 id="1-why-do-we-need-ingress">1. Why do we need Ingress?</h2>
+<p>In the previous workshop, I introduced you to concepts like Service, Deployment, Pod, Namespace, etc., and in this article, I will introduce you to Ingress.</p>
+<p>In the last workshop, we were able to expose services outside the cluster using NodePort. This method works fine but isn&rsquo;t always the best fit. The total number of ports on a node is limited and cannot scale. If many services need to be exposed, managing these ports becomes challenging.</p>
+<p>Moreover, NodePort only allows us to expose services outside the cluster through ports and does not support exposing services via domain names.</p>
+<p>Ingress was created to solve this issue. Ingress is a resource in Kubernetes that allows traffic routing from outside the cluster to services inside the cluster.</p>
+<h2 id="2-the-concept-of-ingress-in-kubernetes">2. The concept of Ingress in Kubernetes</h2>
+<p>Ingress is a resource in Kubernetes that allows traffic routing from outside the cluster to services inside the cluster.</p>
+<p>As illustrated in the image above, when we use ingress, there is only one entry point into the cluster, from which traffic can be routed to various services inside the cluster.</p>
+<p>To make it clearer, imagine you have multiple services running inside your k8s cluster, each service like a store in a shopping mall. Ingress acts like a receptionist at the entrance of the mall, guiding customers (external requests) to the correct store (service) they need.</p>
+<h2 id="3-components-of-ingress">3. Components of Ingress</h2>
+<p>Ingress consists of two main components:</p>
 <ul>
-<li>Construction department</li>
-<li>Logistics department</li>
-<li>Painting department</li>
-<li>Electrical department</li>
-<li>Plumbing department</li>
+<li>
+<p><strong>Ingress Rule</strong>: A resource in Kubernetes that defines how to route traffic from outside to services inside the cluster.</p>
+</li>
+<li>
+<p><strong>Ingress Controller</strong>: A daemon that makes routing decisions based on information from the Ingress Resource.</p>
+</li>
 </ul>
-<p>And the person who coordinates and ensures that these tasks operate smoothly and on schedule is the <strong>contractor</strong>.</p>
-<p>In case the construction department is behind schedule, the <strong>contractor</strong> must find a way to add resources to this department by hiring more workers to ensure that the work proceeds as planned without interruption.</p>
-<p>In this case, <strong>K8s</strong> can be seen as the <strong>contractor</strong> in the above scenario. <strong>K8s</strong> acts as a coordinator in the system, where each service in the system is like a department in that construction project. When a service encounters a problem (resource shortage, app crash, etc.), <strong>K8s</strong> will play the role of providing additional &ldquo;workers&rdquo; by scaling up the <strong>Pods</strong> to handle the workload.</p>
-<p>Additionally, there are many other benefits from using <strong>K8s</strong> for deployment. You can refer to more details in this <a href="https://www.youtube.com/watch?v=a2gfpZE8vXY">video</a>.</p>
-<h2 id="2-core-concepts-in-k8s">2. Core Concepts in K8s</h2>
-<ul>
-<li>Control Plane</li>
-<li>Nodes</li>
-<li>Pod</li>
-<li>ReplicaSet</li>
-<li>Deployment</li>
-<li>Namespace</li>
-<li>Services</li>
-<li>Types of Services</li>
-</ul>
-<h2 id="3-references">3. References</h2>
-<ul>
-<li><a href="https://kubernetes.io/docs/concepts/overview/">Overview - kubernetes</a></li>
-<li><a href="https://edgehog.blog/getting-started-with-k8s-core-concepts-135fb570462e">Getting Started with K8s: Core Concepts</a></li>
-</ul>
+<p>We will dive deeper into Ingress Rule and Ingress Controller in the following sections.</p>
 
 
 
@@ -355,6 +637,173 @@
 
                     
                     
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
                     
 
                     
@@ -373,6 +822,8 @@
 			<a class="nav nav-prev" href="/" title="Introduction"> <i class="fa fa-chevron-left"></i></a>
 		
 		
+			<a class="nav nav-next" href="/1-introduce_ingress/1.1-ingress_component/" title="Ingress Components" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
+		
 	
     </div>
 
@@ -381,19 +832,19 @@
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="/js/clipboard.min.js?1725091322"></script>
-    <script src="/js/perfect-scrollbar.min.js?1725091322"></script>
-    <script src="/js/perfect-scrollbar.jquery.min.js?1725091322"></script>
-    <script src="/js/jquery.sticky.js?1725091322"></script>
-    <script src="/js/featherlight.min.js?1725091322"></script>
-    <script src="/js/highlight.pack.js?1725091322"></script>
+    <script src="/js/clipboard.min.js?1725550667"></script>
+    <script src="/js/perfect-scrollbar.min.js?1725550667"></script>
+    <script src="/js/perfect-scrollbar.jquery.min.js?1725550667"></script>
+    <script src="/js/jquery.sticky.js?1725550667"></script>
+    <script src="/js/featherlight.min.js?1725550667"></script>
+    <script src="/js/highlight.pack.js?1725550667"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="/js/modernizr.custom-3.6.0.js?1725091322"></script>
-    <script src="/js/learn.js?1725091322"></script>
-    <script src="/js/hugo-learn.js?1725091322"></script>
+    <script src="/js/modernizr.custom-3.6.0.js?1725550667"></script>
+    <script src="/js/learn.js?1725550667"></script>
+    <script src="/js/hugo-learn.js?1725550667"></script>
 
-    <link href="/mermaid/mermaid.css?1725091322" rel="stylesheet" />
-    <script src="/mermaid/mermaid.js?1725091322"></script>
+    <link href="/mermaid/mermaid.css?1725550667" rel="stylesheet" />
+    <script src="/mermaid/mermaid.js?1725550667"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>

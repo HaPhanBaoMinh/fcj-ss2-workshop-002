@@ -68,6 +68,8 @@
   </url><url>
     <loc>//localhost:1313/vi/3-install_ingress_controller/</loc>
   </url><url>
+    <loc>//localhost:1313/vi/4-public_service_with_ingress/</loc>
+  </url><url>
     <loc>//localhost:1313/vi/categories/</loc>
     <xhtml:link
                 rel="alternate"
