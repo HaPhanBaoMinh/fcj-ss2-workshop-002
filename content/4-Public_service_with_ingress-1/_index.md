@@ -20,24 +20,24 @@ service2.example.com -> service2
 
 Here, I create two simple deployments and services using the `nginx` image:
 
-![Overview](/images/07.png)
+![Overview](/fcj-ss2-workshop-002/images/07.png)
 
 Deploy these two files:
 
         kubectl apply -f service1.yaml
         kubectl apply -f service2.yaml
 
-![Overview](/images/08.png)
+![Overview](/fcj-ss2-workshop-002/images/08.png)
 
 Check to make sure everything is fine:
 
         kubectl get pods
 
-![Overview](/images/09.png)
+![Overview](/fcj-ss2-workshop-002/images/09.png)
 
 ### 3. Configure Ingress to route traffic
 
-![Overview](/images/10.png)
+![Overview](/fcj-ss2-workshop-002/images/10.png)
 
 - **apiVersion: networking.k9s.io/v1**: Declares the API version of Kubernetes that we use for Ingress.
 - **kind: Ingress**: The type of resource we are declaring, here it's Ingress.
@@ -61,13 +61,13 @@ Deploy the Ingress configuration file:
 
       kubectl apply -f ingress.yaml
 
-![Overview](/images/11.png)
+![Overview](/fcj-ss2-workshop-002/images/11.png)
 
 Check if the Ingress has been created:
 
       kubectl get ingress
 
-![Overview](/images/12.png)
+![Overview](/fcj-ss2-workshop-002/images/12.png)
 
 We have now created an Ingress to route traffic by subdomain.
 
@@ -88,11 +88,11 @@ Add the following two lines to the `hosts` file:
     192.168.1.4 service1.example.com
     192.168.1.4 service2.example.com
 
-![Overview](/images/13.png)
+![Overview](/fcj-ss2-workshop-002/images/13.png)
 
 Next, open a browser and access the two domains `service1.example.com` and `service2.example.com`:
 
-![Overview](/images/14.png)
-![Overview](/images/15.png)
+![Overview](/fcj-ss2-workshop-002/images/14.png)
+![Overview](/fcj-ss2-workshop-002/images/15.png)
 
 We have now successfully used Ingress to route traffic by subdomain.

@@ -20,24 +20,24 @@ service2.example.com -> service1
 
 Ở đây tôi tạo 2 deployment và service đơn giản và sử dụng image `nginx`:
 
-![Overview](/images/07.png)
+![Overview](/fcj-ss2-workshop-002/images/07.png)
 
 Tiến hành deploy 2 file này:
 
         kubectl apply -f service1.yaml
         kubectl apply -f service2.yaml
 
-![Overview](/images/08.png)
+![Overview](/fcj-ss2-workshop-002/images/08.png)
 
 Kiểm tra xem mọi thứ đã ổn chưa:
 
         kubectl get pods
 
-![Overview](/images/09.png)
+![Overview](/fcj-ss2-workshop-002/images/09.png)
 
 ### 3. Tiến hành cấu hình Ingress để route traffic
 
-![Overview](/images/10.png)
+![Overview](/fcj-ss2-workshop-002/images/10.png)
 
 - **apiVersion: networking.k9s.io/v1**: Khai báo phiên bản API của Kubernetes mà chúng ta sử dụng cho Ingress.
 - **kind: Ingress**: Loại resource mà chúng ta đang khai báo, ở đây là Ingress.
@@ -61,13 +61,13 @@ Tiến hành deploy file cấu hình Ingress:
 
       kubectl apply -f ingress.yaml
 
-![Overview](/images/11.png)
+![Overview](/fcj-ss2-workshop-002/images/11.png)
 
 Kiểm tra xem Ingress đã được tạo chưa:
 
       kubectl get ingress
 
-![Overview](/images/12.png)
+![Overview](/fcj-ss2-workshop-002/images/12.png)
 
 Như vậy, chúng ta đã tạo Ingress để route traffic bằng Subdomain.
 
@@ -88,11 +88,11 @@ Thêm 2 dòng sau vào file `hosts`:
     192.168.1.4 service1.example.com
     192.168.1.4 service2.example.com
 
-![Overview](/images/13.png)
+![Overview](/fcj-ss2-workshop-002/images/13.png)
 
 Tiếp theo, mở trình duyệt và truy cập vào 2 domain `service1.example.com` và `service2.example.com`:
 
-![Overview](/images/14.png)
-![Overview](/images/15.png)
+![Overview](/fcj-ss2-workshop-002/images/14.png)
+![Overview](/fcj-ss2-workshop-002/images/15.png)
 
 Như vậy, chúng ta đã sử dụng Ingress để route traffic bằng Subdomain.

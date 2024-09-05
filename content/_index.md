@@ -8,7 +8,7 @@ pre: " <b> 1. </b> "
 
 # Public a Service and Route Traffic by Subdomain and Path
 
-![Overview](/images/01.webp)
+![Overview](/fcj-ss2-workshop-002/images/01.webp)
 
 ## 1. Overview
 

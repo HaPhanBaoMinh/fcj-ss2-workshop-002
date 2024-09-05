@@ -14,7 +14,7 @@ IP Whitelist là một danh sách các địa chỉ IP được phép truy cập
 
 Ứng dụng của chứng năng này là để bảo vệ dịch vụ hoặc ứng dụng khỏi các cuộc tấn công từ các IP không mong muốn. Hoặc giới hạn quyền truy cập vào dịch vụ hoặc ứng dụng với một số IP cụ thể như các IP nội bộ của công ty, ...
 
-![Overview](/images/00.webp)
+![Overview](/fcj-ss2-workshop-002/images/00.webp)
 
 ### 2. Cấu hình Ingress với IP Whitelist
 
@@ -24,7 +24,7 @@ Mình sẽ lấy ví dụ service 1 là phiên bản cũ và service 2 là phiê
 
 Chúng ta sẽ cấu hình chỉ có IP `192,168.1.10` được truy cập vào service 2 thôi.
 
-![Overview](/images/29.png)
+![Overview](/fcj-ss2-workshop-002/images/29.png)
 
 Trong file cấu hình trên chúng ta route "service2.example.com" vào service 2, tuy nhiên chỉ có IP `192.168.1.10` được truy cập vào service 2. 
 
@@ -32,7 +32,7 @@ Tiến hành deploy file cấu hình Ingress:
 
         kubectl apply -f ingress.yaml
 
-![Overview](/images/30.png)
+![Overview](/fcj-ss2-workshop-002/images/30.png)
 
 ### 4. Kiểm tra kết quả
 
@@ -52,13 +52,13 @@ Thêm 2 dòng sau vào file `hosts`:
 
 Tiếp theo, mở trình duyệt và truy cập vào domain `service2.example.com` bằng chính máy host, và gặp thông báo lỗi `403 Forbidden`:
 
-![Overview](/images/31.png)
+![Overview](/fcj-ss2-workshop-002/images/31.png)
 
 Tiếp theo chúng ta sẽ thử truy cập vào domain `service2.example.com` bằng máy có IP `192.168.1.10`:
 
 Hiện tại đây là máy với IP đúng với IP được whitelist:
 
-![Overview](/images/32.png)
+![Overview](/fcj-ss2-workshop-002/images/32.png)
 
 Ở đây tôi cũng phải cấu hình thông tin `/etc/hosts` như trên máy có IP `192.168.1.10`:
 
@@ -68,6 +68,6 @@ Sau có chúng ta tiến hành curl vào domain `service2.example.com`:
 
 Kết quả trả về:
 
-![Overview](/images/33.png)
+![Overview](/fcj-ss2-workshop-002/images/33.png)
 
 Như vậy, chúng ta đã cấu hình Ingress với IP Whitelist thành công. Chỉ có IP `192.168.1.10` được truy cập vào service 2.

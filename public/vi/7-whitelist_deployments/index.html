@@ -12,21 +12,21 @@
     <title>Cấu hình Ingress với IP Whitelist :: Cài đặt và Triển khai Dịch vụ Đầu tiên của Bạn với Kubernetes</title>
 
     
-    <link href="/css/nucleus.css?1725550661" rel="stylesheet">
-    <link href="/css/fontawesome-all.min.css?1725550661" rel="stylesheet">
-    <link href="/css/hybrid.css?1725550661" rel="stylesheet">
-    <link href="/css/featherlight.min.css?1725550661" rel="stylesheet">
-    <link href="/css/perfect-scrollbar.min.css?1725550661" rel="stylesheet">
-    <link href="/css/auto-complete.css?1725550661" rel="stylesheet">
-    <link href="/css/atom-one-dark-reasonable.css?1725550661" rel="stylesheet">
-    <link href="/css/theme.css?1725550661" rel="stylesheet">
-    <link href="/css/hugo-theme.css?1725550661" rel="stylesheet">
+    <link href="/css/nucleus.css?1725551080" rel="stylesheet">
+    <link href="/css/fontawesome-all.min.css?1725551080" rel="stylesheet">
+    <link href="/css/hybrid.css?1725551080" rel="stylesheet">
+    <link href="/css/featherlight.min.css?1725551080" rel="stylesheet">
+    <link href="/css/perfect-scrollbar.min.css?1725551080" rel="stylesheet">
+    <link href="/css/auto-complete.css?1725551080" rel="stylesheet">
+    <link href="/css/atom-one-dark-reasonable.css?1725551080" rel="stylesheet">
+    <link href="/css/theme.css?1725551080" rel="stylesheet">
+    <link href="/css/hugo-theme.css?1725551080" rel="stylesheet">
     
-    <link href="/css/theme-workshop.css?1725550661" rel="stylesheet">
+    <link href="/css/theme-workshop.css?1725551080" rel="stylesheet">
     
     
 
-    <script src="/js/jquery-3.3.1.min.js?1725550661"></script>
+    <script src="/js/jquery-3.3.1.min.js?1725551080"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -57,14 +57,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="/js/lunr.min.js?1725550661"></script>
-<script type="text/javascript" src="/js/auto-complete.js?1725550661"></script>
+<script type="text/javascript" src="/js/lunr.min.js?1725551080"></script>
+<script type="text/javascript" src="/js/auto-complete.js?1725551080"></script>
 <script type="text/javascript">
     
         var baseurl = "\/\/localhost:1313\/\/vi";
     
 </script>
-<script type="text/javascript" src="/js/search.js?1725550661"></script>
+<script type="text/javascript" src="/js/search.js?1725551080"></script>
 
     
   </div>
@@ -578,17 +578,17 @@
 <h3 id="1-ip-whitelist-là-gì">1. IP Whitelist là gì?</h3>
 <p>IP Whitelist là một danh sách các địa chỉ IP được phép truy cập vào một dịch vụ hoặc một ứng dụng. Các IP không nằm trong danh sách này sẽ không thể truy cập vào dịch vụ hoặc ứng dụng đó.</p>
 <p>Ứng dụng của chứng năng này là để bảo vệ dịch vụ hoặc ứng dụng khỏi các cuộc tấn công từ các IP không mong muốn. Hoặc giới hạn quyền truy cập vào dịch vụ hoặc ứng dụng với một số IP cụ thể như các IP nội bộ của công ty, &hellip;</p>
-<p><img alt="Overview" src="/images/00.webp"></p>
+<p><img alt="Overview" src="/fcj-ss2-workshop-002/images/00.webp"></p>
 <h3 id="2-cấu-hình-ingress-với-ip-whitelist">2. Cấu hình Ingress với IP Whitelist</h3>
 <p>Ok chúng ta sẽ tái sử dụng lại 2 service ở phần trước.</p>
 <p>Mình sẽ lấy ví dụ service 1 là phiên bản cũ và service 2 là phiên bản mới.</p>
 <p>Chúng ta sẽ cấu hình chỉ có IP <code>192,168.1.10</code> được truy cập vào service 2 thôi.</p>
-<p><img alt="Overview" src="/images/29.png"></p>
+<p><img alt="Overview" src="/fcj-ss2-workshop-002/images/29.png"></p>
 <p>Trong file cấu hình trên chúng ta route &ldquo;service2.example.com&rdquo; vào service 2, tuy nhiên chỉ có IP <code>192.168.1.10</code> được truy cập vào service 2.</p>
 <p>Tiến hành deploy file cấu hình Ingress:</p>
 <pre><code>    kubectl apply -f ingress.yaml
 </code></pre>
-<p><img alt="Overview" src="/images/30.png"></p>
+<p><img alt="Overview" src="/fcj-ss2-workshop-002/images/30.png"></p>
 <h3 id="4-kiểm-tra-kết-quả">4. Kiểm tra kết quả</h3>
 <p>Đầu tiên các bạn thấy thông tin IP của máy host:</p>
 <pre><code>  ifconfig
@@ -601,16 +601,16 @@
 <pre><code>192.168.1.4 service2.example.com
 </code></pre>
 <p>Tiếp theo, mở trình duyệt và truy cập vào domain <code>service2.example.com</code> bằng chính máy host, và gặp thông báo lỗi <code>403 Forbidden</code>:</p>
-<p><img alt="Overview" src="/images/31.png"></p>
+<p><img alt="Overview" src="/fcj-ss2-workshop-002/images/31.png"></p>
 <p>Tiếp theo chúng ta sẽ thử truy cập vào domain <code>service2.example.com</code> bằng máy có IP <code>192.168.1.10</code>:</p>
 <p>Hiện tại đây là máy với IP đúng với IP được whitelist:</p>
-<p><img alt="Overview" src="/images/32.png"></p>
+<p><img alt="Overview" src="/fcj-ss2-workshop-002/images/32.png"></p>
 <p>Ở đây tôi cũng phải cấu hình thông tin <code>/etc/hosts</code> như trên máy có IP <code>192.168.1.10</code>:</p>
 <p>Sau có chúng ta tiến hành curl vào domain <code>service2.example.com</code>:</p>
 <pre><code>    curl service2.example.com
 </code></pre>
 <p>Kết quả trả về:</p>
-<p><img alt="Overview" src="/images/33.png"></p>
+<p><img alt="Overview" src="/fcj-ss2-workshop-002/images/33.png"></p>
 <p>Như vậy, chúng ta đã cấu hình Ingress với IP Whitelist thành công. Chỉ có IP <code>192.168.1.10</code> được truy cập vào service 2.</p>
 
 
@@ -853,19 +853,19 @@
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="/js/clipboard.min.js?1725550661"></script>
-    <script src="/js/perfect-scrollbar.min.js?1725550661"></script>
-    <script src="/js/perfect-scrollbar.jquery.min.js?1725550661"></script>
-    <script src="/js/jquery.sticky.js?1725550661"></script>
-    <script src="/js/featherlight.min.js?1725550661"></script>
-    <script src="/js/highlight.pack.js?1725550661"></script>
+    <script src="/js/clipboard.min.js?1725551080"></script>
+    <script src="/js/perfect-scrollbar.min.js?1725551080"></script>
+    <script src="/js/perfect-scrollbar.jquery.min.js?1725551080"></script>
+    <script src="/js/jquery.sticky.js?1725551080"></script>
+    <script src="/js/featherlight.min.js?1725551080"></script>
+    <script src="/js/highlight.pack.js?1725551080"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="/js/modernizr.custom-3.6.0.js?1725550661"></script>
-    <script src="/js/learn.js?1725550661"></script>
-    <script src="/js/hugo-learn.js?1725550661"></script>
+    <script src="/js/modernizr.custom-3.6.0.js?1725551080"></script>
+    <script src="/js/learn.js?1725551080"></script>
+    <script src="/js/hugo-learn.js?1725551080"></script>
 
-    <link href="/mermaid/mermaid.css?1725550661" rel="stylesheet" />
-    <script src="/mermaid/mermaid.js?1725550661"></script>
+    <link href="/mermaid/mermaid.css?1725551080" rel="stylesheet" />
+    <script src="/mermaid/mermaid.js?1725551080"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>

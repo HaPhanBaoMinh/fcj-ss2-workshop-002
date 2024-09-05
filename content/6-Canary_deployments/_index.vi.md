@@ -12,7 +12,7 @@ Trong bài viết này, tôi sẽ hướng dẫn các bạn cách triển khai C
 
 Canary Deployments là một phương pháp triển khai phần mềm mới một cách an toàn và kiểm soát. Phương pháp này cho phép bạn triển khai một phiên bản mới của ứng dụng và chỉ chuyển một phần nhỏ lưu lượng truy cập tới phiên bản mới.      Điều này giúp bạn kiểm tra phiên bản mới trước khi triển khai cho tất cả người dùng.
 
-![Overview](/images/24.png)
+![Overview](/fcj-ss2-workshop-002/images/24.png)
 
 ### 2. Cấu hình Canary Deployments cho ingress
 
@@ -22,7 +22,7 @@ Mình sẽ lấy ví dụ service 1 là phiên bản cũ và service 2 là phiê
 
 Chúng ta có file cấu hình Ingress như sau:
 
-![Overview](/images/25.png)
+![Overview](/fcj-ss2-workshop-002/images/25.png)
 
 Ở đây mình sẽ route 80% traffic vào service 1 và 20% traffic vào service 2
 
@@ -30,7 +30,7 @@ Tiến hành deploy file cấu hình Ingress:
 
         kubectl apply -f ingress.yaml
 
-![Overview](/images/26.png)
+![Overview](/fcj-ss2-workshop-002/images/26.png)
 
 ### 4. Kiểm tra kết quả
 
@@ -51,7 +51,7 @@ Thêm 2 dòng sau vào file `hosts`:
 
 Tiếp theo, mở trình duyệt và truy cập vào domain `canary.example.com`
 
-![Overview](/images/27.png)
-![Overview](/images/28.png)
+![Overview](/fcj-ss2-workshop-002/images/27.png)
+![Overview](/fcj-ss2-workshop-002/images/28.png)
 
 Như vậy, chúng ta đã cấu hình Canary Deployments Ingress thành công với traffic 80% vào service 1 và 20% vào service 2.

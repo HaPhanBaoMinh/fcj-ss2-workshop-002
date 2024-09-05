@@ -12,21 +12,21 @@
     <title>Tiến hành cài đặt Ingress Controller :: Cài đặt và Triển khai Dịch vụ Đầu tiên của Bạn với Kubernetes</title>
 
     
-    <link href="/css/nucleus.css?1725550661" rel="stylesheet">
-    <link href="/css/fontawesome-all.min.css?1725550661" rel="stylesheet">
-    <link href="/css/hybrid.css?1725550661" rel="stylesheet">
-    <link href="/css/featherlight.min.css?1725550661" rel="stylesheet">
-    <link href="/css/perfect-scrollbar.min.css?1725550661" rel="stylesheet">
-    <link href="/css/auto-complete.css?1725550661" rel="stylesheet">
-    <link href="/css/atom-one-dark-reasonable.css?1725550661" rel="stylesheet">
-    <link href="/css/theme.css?1725550661" rel="stylesheet">
-    <link href="/css/hugo-theme.css?1725550661" rel="stylesheet">
+    <link href="/css/nucleus.css?1725551080" rel="stylesheet">
+    <link href="/css/fontawesome-all.min.css?1725551080" rel="stylesheet">
+    <link href="/css/hybrid.css?1725551080" rel="stylesheet">
+    <link href="/css/featherlight.min.css?1725551080" rel="stylesheet">
+    <link href="/css/perfect-scrollbar.min.css?1725551080" rel="stylesheet">
+    <link href="/css/auto-complete.css?1725551080" rel="stylesheet">
+    <link href="/css/atom-one-dark-reasonable.css?1725551080" rel="stylesheet">
+    <link href="/css/theme.css?1725551080" rel="stylesheet">
+    <link href="/css/hugo-theme.css?1725551080" rel="stylesheet">
     
-    <link href="/css/theme-workshop.css?1725550661" rel="stylesheet">
+    <link href="/css/theme-workshop.css?1725551080" rel="stylesheet">
     
     
 
-    <script src="/js/jquery-3.3.1.min.js?1725550661"></script>
+    <script src="/js/jquery-3.3.1.min.js?1725551080"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -57,14 +57,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="/js/lunr.min.js?1725550661"></script>
-<script type="text/javascript" src="/js/auto-complete.js?1725550661"></script>
+<script type="text/javascript" src="/js/lunr.min.js?1725551080"></script>
+<script type="text/javascript" src="/js/auto-complete.js?1725551080"></script>
 <script type="text/javascript">
     
         var baseurl = "\/\/localhost:1313\/\/vi";
     
 </script>
-<script type="text/javascript" src="/js/search.js?1725550661"></script>
+<script type="text/javascript" src="/js/search.js?1725551080"></script>
 
     
   </div>
@@ -579,19 +579,19 @@
 <pre><code>    microk8s enable ingress
 </code></pre>
 <p>Sau khi cài đặt xong, chúng ta sẽ thấy một Pod mới được tạo ra:</p>
-<p><img alt="Overview" src="/images/03.png">
-<img alt="Overview" src="/images/04.png"></p>
+<p><img alt="Overview" src="/fcj-ss2-workshop-002/images/03.png">
+<img alt="Overview" src="/fcj-ss2-workshop-002/images/04.png"></p>
 <p>Tuy nhiên sau đây tôi sẽ hướng dẫn các bạn cách cài đặt Ingress Controller bằng cách sử dụng Helm.
 Phòng trường hợp bạn không sử dụng MicroK8s hoặc muốn tùy chỉnh nhiều hơn.</p>
 <h3 id="2-cài-đặt-ingress-controller-bằng-helm">2. Cài đặt Ingress Controller bằng Helm</h3>
 <p>Đầu tiên tôi sẽ disable Add-on Ingress trước:</p>
 <pre><code>    microk8s disable ingress
 </code></pre>
-<p><img alt="Overview" src="/images/05.png"></p>
+<p><img alt="Overview" src="/fcj-ss2-workshop-002/images/05.png"></p>
 <p>Tiếp theo, chúng ta sẽ cài đặt Helm:</p>
 <pre><code>    sudo snap install helm --classic
 </code></pre>
-<p><img alt="Overview" src="/images/06.png"></p>
+<p><img alt="Overview" src="/fcj-ss2-workshop-002/images/06.png"></p>
 <p>Sau khi cài đặt xong, chúng ta sẽ add Helm repository của Nginx Ingress Controller:</p>
 <pre><code>    helm repo add nginx-stable https://helm.nginx.com/stable
     helm repo update
@@ -842,19 +842,19 @@ Phòng trường hợp bạn không sử dụng MicroK8s hoặc muốn tùy ch�
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="/js/clipboard.min.js?1725550661"></script>
-    <script src="/js/perfect-scrollbar.min.js?1725550661"></script>
-    <script src="/js/perfect-scrollbar.jquery.min.js?1725550661"></script>
-    <script src="/js/jquery.sticky.js?1725550661"></script>
-    <script src="/js/featherlight.min.js?1725550661"></script>
-    <script src="/js/highlight.pack.js?1725550661"></script>
+    <script src="/js/clipboard.min.js?1725551080"></script>
+    <script src="/js/perfect-scrollbar.min.js?1725551080"></script>
+    <script src="/js/perfect-scrollbar.jquery.min.js?1725551080"></script>
+    <script src="/js/jquery.sticky.js?1725551080"></script>
+    <script src="/js/featherlight.min.js?1725551080"></script>
+    <script src="/js/highlight.pack.js?1725551080"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="/js/modernizr.custom-3.6.0.js?1725550661"></script>
-    <script src="/js/learn.js?1725550661"></script>
-    <script src="/js/hugo-learn.js?1725550661"></script>
+    <script src="/js/modernizr.custom-3.6.0.js?1725551080"></script>
+    <script src="/js/learn.js?1725551080"></script>
+    <script src="/js/hugo-learn.js?1725551080"></script>
 
-    <link href="/mermaid/mermaid.css?1725550661" rel="stylesheet" />
-    <script src="/mermaid/mermaid.js?1725550661"></script>
+    <link href="/mermaid/mermaid.css?1725551080" rel="stylesheet" />
+    <script src="/mermaid/mermaid.js?1725551080"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>

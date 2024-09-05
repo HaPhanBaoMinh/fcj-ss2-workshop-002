@@ -20,7 +20,7 @@ example.com/service2 -> service2
 
 Here, I create two simple deployments and services using the `nginx` image, using the same two services from the previous section:
 
-![Overview](/images/16.png)
+![Overview](/fcj-ss2-workshop-002/images/16.png)
 
 Deploy these two files:
 
@@ -31,11 +31,11 @@ Check to make sure everything is fine:
 
         kubectl get pods
 
-![Overview](/images/17.png)
+![Overview](/fcj-ss2-workshop-002/images/17.png)
 
 ### 3. Configure Ingress to route traffic
 
-![Overview](/images/18.png)
+![Overview](/fcj-ss2-workshop-002/images/18.png)
 
 - **apiVersion: networking.k9s.io/v1**: Declares the API version of Kubernetes that we use for Ingress.
 - **kind: Ingress**: The type of resource we are declaring, here it's Ingress.
@@ -59,13 +59,13 @@ Deploy the Ingress configuration file:
 
       kubectl apply -f ingress.yaml
 
-![Overview](/images/19.png)
+![Overview](/fcj-ss2-workshop-002/images/19.png)
 
 Check if the Ingress has been created:
 
       kubectl get ingress
 
-![Overview](/images/20.png)
+![Overview](/fcj-ss2-workshop-002/images/20.png)
 
 We have now created an Ingress to route traffic by path.
 
@@ -85,11 +85,11 @@ Add the following line to the `hosts` file:
 
     192.168.1.4 example.com
 
-![Overview](/images/21.png)
+![Overview](/fcj-ss2-workshop-002/images/21.png)
 
 Next, open a browser and access the two URLs `example.com/service1` and `example.com/service2`:
 
-![Overview](/images/22.png)
-![Overview](/images/23.png)
+![Overview](/fcj-ss2-workshop-002/images/22.png)
+![Overview](/fcj-ss2-workshop-002/images/23.png)
 
 We have now successfully used Ingress to route traffic by path.

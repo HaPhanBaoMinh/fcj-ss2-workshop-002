@@ -15,8 +15,8 @@ Phần ingress này nằm trong phần Add-on của MicroK8s, nên việc cài �
 
 Sau khi cài đặt xong, chúng ta sẽ thấy một Pod mới được tạo ra:
 
-![Overview](/images/03.png)
-![Overview](/images/04.png)
+![Overview](/fcj-ss2-workshop-002/images/03.png)
+![Overview](/fcj-ss2-workshop-002/images/04.png)
 
 Tuy nhiên sau đây tôi sẽ hướng dẫn các bạn cách cài đặt Ingress Controller bằng cách sử dụng Helm.
 Phòng trường hợp bạn không sử dụng MicroK8s hoặc muốn tùy chỉnh nhiều hơn.
@@ -27,13 +27,13 @@ Phòng trường hợp bạn không sử dụng MicroK8s hoặc muốn tùy ch�
 
         microk8s disable ingress
 
-![Overview](/images/05.png)
+![Overview](/fcj-ss2-workshop-002/images/05.png)
 
 Tiếp theo, chúng ta sẽ cài đặt Helm:
 
         sudo snap install helm --classic
 
-![Overview](/images/06.png)
+![Overview](/fcj-ss2-workshop-002/images/06.png)
 
 Sau khi cài đặt xong, chúng ta sẽ add Helm repository của Nginx Ingress Controller:
 

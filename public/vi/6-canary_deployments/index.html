@@ -12,21 +12,21 @@
     <title>Cấu hình Canary deployments :: Cài đặt và Triển khai Dịch vụ Đầu tiên của Bạn với Kubernetes</title>
 
     
-    <link href="/css/nucleus.css?1725550661" rel="stylesheet">
-    <link href="/css/fontawesome-all.min.css?1725550661" rel="stylesheet">
-    <link href="/css/hybrid.css?1725550661" rel="stylesheet">
-    <link href="/css/featherlight.min.css?1725550661" rel="stylesheet">
-    <link href="/css/perfect-scrollbar.min.css?1725550661" rel="stylesheet">
-    <link href="/css/auto-complete.css?1725550661" rel="stylesheet">
-    <link href="/css/atom-one-dark-reasonable.css?1725550661" rel="stylesheet">
-    <link href="/css/theme.css?1725550661" rel="stylesheet">
-    <link href="/css/hugo-theme.css?1725550661" rel="stylesheet">
+    <link href="/css/nucleus.css?1725551080" rel="stylesheet">
+    <link href="/css/fontawesome-all.min.css?1725551080" rel="stylesheet">
+    <link href="/css/hybrid.css?1725551080" rel="stylesheet">
+    <link href="/css/featherlight.min.css?1725551080" rel="stylesheet">
+    <link href="/css/perfect-scrollbar.min.css?1725551080" rel="stylesheet">
+    <link href="/css/auto-complete.css?1725551080" rel="stylesheet">
+    <link href="/css/atom-one-dark-reasonable.css?1725551080" rel="stylesheet">
+    <link href="/css/theme.css?1725551080" rel="stylesheet">
+    <link href="/css/hugo-theme.css?1725551080" rel="stylesheet">
     
-    <link href="/css/theme-workshop.css?1725550661" rel="stylesheet">
+    <link href="/css/theme-workshop.css?1725551080" rel="stylesheet">
     
     
 
-    <script src="/js/jquery-3.3.1.min.js?1725550661"></script>
+    <script src="/js/jquery-3.3.1.min.js?1725551080"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -57,14 +57,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="/js/lunr.min.js?1725550661"></script>
-<script type="text/javascript" src="/js/auto-complete.js?1725550661"></script>
+<script type="text/javascript" src="/js/lunr.min.js?1725551080"></script>
+<script type="text/javascript" src="/js/auto-complete.js?1725551080"></script>
 <script type="text/javascript">
     
         var baseurl = "\/\/localhost:1313\/\/vi";
     
 </script>
-<script type="text/javascript" src="/js/search.js?1725550661"></script>
+<script type="text/javascript" src="/js/search.js?1725551080"></script>
 
     
   </div>
@@ -577,17 +577,17 @@
 	<p>Trong bài viết này, tôi sẽ hướng dẫn các bạn cách triển khai Canary Deployments Ingress.</p>
 <h3 id="1-canary-deployments-là-gì">1. Canary Deployments là gì?</h3>
 <p>Canary Deployments là một phương pháp triển khai phần mềm mới một cách an toàn và kiểm soát. Phương pháp này cho phép bạn triển khai một phiên bản mới của ứng dụng và chỉ chuyển một phần nhỏ lưu lượng truy cập tới phiên bản mới.      Điều này giúp bạn kiểm tra phiên bản mới trước khi triển khai cho tất cả người dùng.</p>
-<p><img alt="Overview" src="/images/24.png"></p>
+<p><img alt="Overview" src="/fcj-ss2-workshop-002/images/24.png"></p>
 <h3 id="2-cấu-hình-canary-deployments-cho-ingress">2. Cấu hình Canary Deployments cho ingress</h3>
 <p>Ok chúng ta sẽ tái sử dụng lại 2 service ở phần trước.</p>
 <p>Mình sẽ lấy ví dụ service 1 là phiên bản cũ và service 2 là phiên bản mới.</p>
 <p>Chúng ta có file cấu hình Ingress như sau:</p>
-<p><img alt="Overview" src="/images/25.png"></p>
+<p><img alt="Overview" src="/fcj-ss2-workshop-002/images/25.png"></p>
 <p>Ở đây mình sẽ route 80% traffic vào service 1 và 20% traffic vào service 2</p>
 <p>Tiến hành deploy file cấu hình Ingress:</p>
 <pre><code>    kubectl apply -f ingress.yaml
 </code></pre>
-<p><img alt="Overview" src="/images/26.png"></p>
+<p><img alt="Overview" src="/fcj-ss2-workshop-002/images/26.png"></p>
 <h3 id="4-kiểm-tra-kết-quả">4. Kiểm tra kết quả</h3>
 <p>Đầu tiên các bạn thấy thông tin IP của máy host:</p>
 <pre><code>  ifconfig
@@ -600,8 +600,8 @@
 <pre><code>192.168.1.4 canary.example.com
 </code></pre>
 <p>Tiếp theo, mở trình duyệt và truy cập vào domain <code>canary.example.com</code></p>
-<p><img alt="Overview" src="/images/27.png">
-<img alt="Overview" src="/images/28.png"></p>
+<p><img alt="Overview" src="/fcj-ss2-workshop-002/images/27.png">
+<img alt="Overview" src="/fcj-ss2-workshop-002/images/28.png"></p>
 <p>Như vậy, chúng ta đã cấu hình Canary Deployments Ingress thành công với traffic 80% vào service 1 và 20% vào service 2.</p>
 
 
@@ -847,19 +847,19 @@
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="/js/clipboard.min.js?1725550661"></script>
-    <script src="/js/perfect-scrollbar.min.js?1725550661"></script>
-    <script src="/js/perfect-scrollbar.jquery.min.js?1725550661"></script>
-    <script src="/js/jquery.sticky.js?1725550661"></script>
-    <script src="/js/featherlight.min.js?1725550661"></script>
-    <script src="/js/highlight.pack.js?1725550661"></script>
+    <script src="/js/clipboard.min.js?1725551080"></script>
+    <script src="/js/perfect-scrollbar.min.js?1725551080"></script>
+    <script src="/js/perfect-scrollbar.jquery.min.js?1725551080"></script>
+    <script src="/js/jquery.sticky.js?1725551080"></script>
+    <script src="/js/featherlight.min.js?1725551080"></script>
+    <script src="/js/highlight.pack.js?1725551080"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="/js/modernizr.custom-3.6.0.js?1725550661"></script>
-    <script src="/js/learn.js?1725550661"></script>
-    <script src="/js/hugo-learn.js?1725550661"></script>
+    <script src="/js/modernizr.custom-3.6.0.js?1725551080"></script>
+    <script src="/js/learn.js?1725551080"></script>
+    <script src="/js/hugo-learn.js?1725551080"></script>
 
-    <link href="/mermaid/mermaid.css?1725550661" rel="stylesheet" />
-    <script src="/mermaid/mermaid.js?1725550661"></script>
+    <link href="/mermaid/mermaid.css?1725551080" rel="stylesheet" />
+    <script src="/mermaid/mermaid.js?1725551080"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>

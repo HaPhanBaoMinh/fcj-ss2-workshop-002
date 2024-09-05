@@ -6,7 +6,7 @@ chapter : false
 pre : " <b> 1.1 </b> "
 ---
 
-![Overview](/images/02.png)
+![Overview](/fcj-ss2-workshop-002/images/02.png)
 
 
 ## 1. Cấu trúc của Ingress Resource

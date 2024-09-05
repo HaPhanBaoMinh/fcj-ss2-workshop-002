@@ -6,7 +6,7 @@ chapter : false
 pre : " <b> 1. </b> "
 ---
 
-![Overview](/images/01.webp)
+![Overview](/fcj-ss2-workshop-002/images/01.webp)
 
 ## 1. Why do we need Ingress?
 

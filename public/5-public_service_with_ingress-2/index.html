@@ -12,21 +12,21 @@
     <title>Using Ingress to Route Traffic by Path :: Installing and Deploying Your First Service with Kubernetes</title>
 
     
-    <link href="/css/nucleus.css?1725550661" rel="stylesheet">
-    <link href="/css/fontawesome-all.min.css?1725550661" rel="stylesheet">
-    <link href="/css/hybrid.css?1725550661" rel="stylesheet">
-    <link href="/css/featherlight.min.css?1725550661" rel="stylesheet">
-    <link href="/css/perfect-scrollbar.min.css?1725550661" rel="stylesheet">
-    <link href="/css/auto-complete.css?1725550661" rel="stylesheet">
-    <link href="/css/atom-one-dark-reasonable.css?1725550661" rel="stylesheet">
-    <link href="/css/theme.css?1725550661" rel="stylesheet">
-    <link href="/css/hugo-theme.css?1725550661" rel="stylesheet">
+    <link href="/css/nucleus.css?1725551080" rel="stylesheet">
+    <link href="/css/fontawesome-all.min.css?1725551080" rel="stylesheet">
+    <link href="/css/hybrid.css?1725551080" rel="stylesheet">
+    <link href="/css/featherlight.min.css?1725551080" rel="stylesheet">
+    <link href="/css/perfect-scrollbar.min.css?1725551080" rel="stylesheet">
+    <link href="/css/auto-complete.css?1725551080" rel="stylesheet">
+    <link href="/css/atom-one-dark-reasonable.css?1725551080" rel="stylesheet">
+    <link href="/css/theme.css?1725551080" rel="stylesheet">
+    <link href="/css/hugo-theme.css?1725551080" rel="stylesheet">
     
-    <link href="/css/theme-workshop.css?1725550661" rel="stylesheet">
+    <link href="/css/theme-workshop.css?1725551080" rel="stylesheet">
     
     
 
-    <script src="/js/jquery-3.3.1.min.js?1725550661"></script>
+    <script src="/js/jquery-3.3.1.min.js?1725551080"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -57,14 +57,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="/js/lunr.min.js?1725550661"></script>
-<script type="text/javascript" src="/js/auto-complete.js?1725550661"></script>
+<script type="text/javascript" src="/js/lunr.min.js?1725551080"></script>
+<script type="text/javascript" src="/js/auto-complete.js?1725551080"></script>
 <script type="text/javascript">
     
         var baseurl = "\/\/localhost:1313\/";
     
 </script>
-<script type="text/javascript" src="/js/search.js?1725550661"></script>
+<script type="text/javascript" src="/js/search.js?1725551080"></script>
 
     
   </div>
@@ -582,7 +582,7 @@
 <p>example.com/service2 -&gt; service2</p>
 <h3 id="2-create-two-deployments-and-services">2. Create two deployments and services</h3>
 <p>Here, I create two simple deployments and services using the <code>nginx</code> image, using the same two services from the previous section:</p>
-<p><img alt="Overview" src="/images/16.png"></p>
+<p><img alt="Overview" src="/fcj-ss2-workshop-002/images/16.png"></p>
 <p>Deploy these two files:</p>
 <pre><code>    kubectl apply -f service1.yaml
     kubectl apply -f service2.yaml
@@ -590,9 +590,9 @@
 <p>Check to make sure everything is fine:</p>
 <pre><code>    kubectl get pods
 </code></pre>
-<p><img alt="Overview" src="/images/17.png"></p>
+<p><img alt="Overview" src="/fcj-ss2-workshop-002/images/17.png"></p>
 <h3 id="3-configure-ingress-to-route-traffic">3. Configure Ingress to route traffic</h3>
-<p><img alt="Overview" src="/images/18.png"></p>
+<p><img alt="Overview" src="/fcj-ss2-workshop-002/images/18.png"></p>
 <ul>
 <li><strong>apiVersion: networking.k9s.io/v1</strong>: Declares the API version of Kubernetes that we use for Ingress.</li>
 <li><strong>kind: Ingress</strong>: The type of resource we are declaring, here it&rsquo;s Ingress.</li>
@@ -636,11 +636,11 @@
 <p>Deploy the Ingress configuration file:</p>
 <pre><code>  kubectl apply -f ingress.yaml
 </code></pre>
-<p><img alt="Overview" src="/images/19.png"></p>
+<p><img alt="Overview" src="/fcj-ss2-workshop-002/images/19.png"></p>
 <p>Check if the Ingress has been created:</p>
 <pre><code>  kubectl get ingress
 </code></pre>
-<p><img alt="Overview" src="/images/20.png"></p>
+<p><img alt="Overview" src="/fcj-ss2-workshop-002/images/20.png"></p>
 <p>We have now created an Ingress to route traffic by path.</p>
 <h3 id="4-check-the-result">4. Check the result</h3>
 <p>First, find the host machine&rsquo;s IP information:</p>
@@ -653,10 +653,10 @@
 <p>Add the following line to the <code>hosts</code> file:</p>
 <pre><code>192.168.1.4 example.com
 </code></pre>
-<p><img alt="Overview" src="/images/21.png"></p>
+<p><img alt="Overview" src="/fcj-ss2-workshop-002/images/21.png"></p>
 <p>Next, open a browser and access the two URLs <code>example.com/service1</code> and <code>example.com/service2</code>:</p>
-<p><img alt="Overview" src="/images/22.png">
-<img alt="Overview" src="/images/23.png"></p>
+<p><img alt="Overview" src="/fcj-ss2-workshop-002/images/22.png">
+<img alt="Overview" src="/fcj-ss2-workshop-002/images/23.png"></p>
 <p>We have now successfully used Ingress to route traffic by path.</p>
 
 
@@ -902,19 +902,19 @@
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="/js/clipboard.min.js?1725550661"></script>
-    <script src="/js/perfect-scrollbar.min.js?1725550661"></script>
-    <script src="/js/perfect-scrollbar.jquery.min.js?1725550661"></script>
-    <script src="/js/jquery.sticky.js?1725550661"></script>
-    <script src="/js/featherlight.min.js?1725550661"></script>
-    <script src="/js/highlight.pack.js?1725550661"></script>
+    <script src="/js/clipboard.min.js?1725551080"></script>
+    <script src="/js/perfect-scrollbar.min.js?1725551080"></script>
+    <script src="/js/perfect-scrollbar.jquery.min.js?1725551080"></script>
+    <script src="/js/jquery.sticky.js?1725551080"></script>
+    <script src="/js/featherlight.min.js?1725551080"></script>
+    <script src="/js/highlight.pack.js?1725551080"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="/js/modernizr.custom-3.6.0.js?1725550661"></script>
-    <script src="/js/learn.js?1725550661"></script>
-    <script src="/js/hugo-learn.js?1725550661"></script>
+    <script src="/js/modernizr.custom-3.6.0.js?1725551080"></script>
+    <script src="/js/learn.js?1725551080"></script>
+    <script src="/js/hugo-learn.js?1725551080"></script>
 
-    <link href="/mermaid/mermaid.css?1725550661" rel="stylesheet" />
-    <script src="/mermaid/mermaid.js?1725550661"></script>
+    <link href="/mermaid/mermaid.css?1725551080" rel="stylesheet" />
+    <script src="/mermaid/mermaid.js?1725551080"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>
